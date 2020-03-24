@@ -10,7 +10,7 @@
     Shopinoc
   </a>
   <div class="log-menu">
-    <a mat-raised-button color="primary">Sign in</a>
+    <a mat-raised-button color="primary" (click)="openDialog()">Sign in</a>
   </div>
   <!--<button mat-button [mat-menu-trigger-for]="menu" >My account</button>
   <mat-menu #menu="matMenu">
@@ -33,7 +33,7 @@
           library_books
         </i>
         Shopping lists</a>
-      <a mat-list-item routerLink="">
+      <a mat-list-item routerLink="/trash">
         <i class="material-icons">
           delete
         </i>
