@@ -1,0 +1,33 @@
+.modal{
+  position: relative;
+  width: 700px;
+  color: #fff;
+  height: 500px;
+}
+
+.modal-header{
+  text-align: center;
+  background-color: #27c637;
+}
+
+h3{
+  padding-top: 26px;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.sign-in{
+  background-color: #fff;
+}
+
+mat-form-field{
+  width: 90%;
+}
+
+
+button{
+  margin-top: 25px;
+  height: 60px;
+  width: 150px;
+  font-size: 17px;
+}
