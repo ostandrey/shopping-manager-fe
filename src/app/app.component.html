@@ -1,5 +1,93 @@
-<div>
-  <app-navbar>
-    <router-outlet></router-outlet>
-  </app-navbar>
+<div id="black-screen">
+  <mat-icon>screen_rotation</mat-icon>
 </div>
+<mat-toolbar id="toolbar-top">
+  <button type="button" id="btn-menu" mat-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  MoneyManager
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <mat-nav-list>
+      <a mat-list-item class="list-item" routerLink="/home">
+        <mat-icon class="list-icon">home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-list-item class="list-item" routerLink="/incomes">
+        <mat-icon class="list-icon">trending_up</mat-icon>
+        <span>Incomes</span>
+      </a>
+      <a mat-list-item class="list-item">
+        <mat-icon class="list-icon">trending_down</mat-icon>
+        <span>Expenses</span>
+      </a>
+      <a mat-list-item class="list-item">
+        <mat-icon class="list-icon">account_box</mat-icon>
+        <span>Profile</span>
+      </a>
+    </mat-nav-list>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+
+  <section id="main">
+    <mat-card>
+      <mat-card-title>Period</mat-card-title>
+      <mat-card-content>
+        <mat-form-field class="datepicker">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker1"
+                 [formControl]="serializedDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="datepicker">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker2"
+                 [formControl]="serializedDate">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+    <div class="values-container">
+      <div class="option-container">
+        <div class="option-title">Incomes</div>
+        <div class="option-value">+10000&#8372;</div>
+      </div>
+      <div class="option-container">
+        <div class="option-title">Expenses</div>
+        <div class="option-value">-4000&#8372;</div>
+      </div>
+      <div class="option-container">
+        <div class="option-title">Balance</div>
+        <div class="option-value">~6000&#8372;</div>
+      </div>
+    </div>
+    <mat-card id="trends">
+      <mat-card-content>
+        Graph will be here
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+</mat-drawer-container>
+
+<mat-toolbar id="toolbar-bottom">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link routerLink="/home">
+      <mat-icon>home</mat-icon>
+    </a>
+    <a mat-tab-link routerLink="/incomes">
+      <mat-icon>trending_up</mat-icon>
+    </a>
+    <a mat-tab-link>
+      <mat-icon>trending_down</mat-icon>
+    </a>
+    <a mat-tab-link>
+      <mat-icon>account_box</mat-icon>
+    </a>
+  </nav>
+</mat-toolbar>

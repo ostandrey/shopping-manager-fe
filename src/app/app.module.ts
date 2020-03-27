@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -12,15 +11,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
-import { ShoppingListsComponent } from './shopping-lists/shopping-lists.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    ShoppingListsComponent,
-    routingComponents
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,15 @@ import { ShoppingListsComponent } from './shopping-lists/shopping-lists.componen
     MatIconModule,
     MatMenuModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

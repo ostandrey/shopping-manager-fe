@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ShoppingListsComponent} from './shopping-lists/shopping-lists.component';
+import {IncomesMainComponent} from './incomes/incomes-main/incomes-main.component';
+import {HomeMainComponent} from './home/home-main/home-main.component';
 
 
 const routes: Routes = [
-  {path: 'shopping-lists', component: ShoppingListsComponent}
+  {path: 'home', component: HomeMainComponent},
+  {path: 'incomes', component: IncomesMainComponent},
+
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({
@@ -13,4 +18,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [ShoppingListsComponent]
+export const routingComponents = [ShoppingListsComponent];
