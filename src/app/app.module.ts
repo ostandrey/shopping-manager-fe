@@ -18,12 +18,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,7 +41,8 @@ import {MatInputModule} from '@angular/material/input';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
