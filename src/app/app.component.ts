@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 
-interface Food {
+interface Wallet {
   value: string;
   viewValue: string;
 }
@@ -14,7 +14,7 @@ interface Food {
 })
 export class AppComponent {
   title = 'shopping-manager-fe';
-  foods: Food[] = [
+  Wallets: Wallet[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}

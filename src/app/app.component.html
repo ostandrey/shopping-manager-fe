@@ -1,10 +1,10 @@
-<mat-toolbar>
+<mat-toolbar id="toolbar">
   MoneyManager
 </mat-toolbar>
 <section>
   <div id="container">
     <!--Module dashboard component: Wallets-->
-    <div>
+    <div class="wallets">
       <h2>Wallets</h2>
       <!--Module dashboard component: Wallets-->
       <div>
@@ -19,41 +19,88 @@
           <!--End Module dashboard component: Wallet-->
         </div>
         <!--End Module dashboard component: Wallets-list-->
-        <mat-card class="wallet-add">+</mat-card>
+        <mat-card class="wallet-add">
+          <mat-icon class="add-icon">
+            <span class="material-icons">add_box</span>
+          </mat-icon>
+        </mat-card>
       </div>
     </div>
     <!--End Module dashboard component: Wallets-->
     <!--Module dashboard component: Overview-->
-    <div>
+    <div class="overview">
       <h2>Overview</h2>
       <!--Module dashboard component: Overview-filter-->
-      <mat-card>
-        <mat-card-title>Filters</mat-card-title>
+      <mat-card class="overview-card">
+        <mat-card-title class="overview-title">Filters</mat-card-title>
+        <!--Module dashboard component: Filters-->
         <mat-card-content class="filters">
+          <!--Card component: Wallet filter-->
           <mat-form-field class="filter-wallet">
-            <mat-label>Favorite food</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
+            <mat-label class="filter-label">Wallet</mat-label>
+            <!--Filter component: Select wallet-->
+            <mat-select class="input-field">
+              <mat-option  *ngFor="let wallet of Wallets" [value]="wallet.value">
+                {{wallet.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <!--End Card component: Wallet filter-->
+          <!--Card component: Start date filter-->
           <mat-form-field class="filter-date">
-            <mat-label>Start date</mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date">
+            <mat-label class="filter-label">Start date</mat-label>
+            <!--Filter component: Select Start date-->
+            <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="date">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
+          <!--End Card component: Start date filter-->
+          <!--Card component: End date filter-->
           <mat-form-field class="filter-date">
-            <mat-label>End date</mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date">
+            <mat-label class="filter-label">End date</mat-label>
+            <!--Filter component: Select End date-->
+            <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="date">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
+          <!--End Card component: End date filter-->
         </mat-card-content>
+        <!--End Module dashboard component: Filters-->
       </mat-card>
       <!--End Module dashboard component: Overview-filter-->
     </div>
-    <!--End Module dashboard component: Wallets-->
+    <!--End Module dashboard component: Overview-->
+    <!--Module dashboard component: Calculations-->
+    <div class="calculation">
+      <!--Module dashboard component: Calculation-list-->
+      <div class="calculation-list">
+        <!--Card component: Total balance-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Balance</mat-card-title>
+          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total balance-->
+        <!--Card component: Total Period Change-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Period Change</mat-card-title>
+          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total Period Change-->
+        <!--Card component: Total Period Expenses-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>
+          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total Period Expenses-->
+        <!--Card component: Total Period Income-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Period Income</mat-card-title>
+          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total Period Income-->
+      </div>
+      <!--End Module dashboard component: Calculation-list-->
+    </div>
+    <!--End Module dashboard component: Calculations-->
   </div>
 </section>
