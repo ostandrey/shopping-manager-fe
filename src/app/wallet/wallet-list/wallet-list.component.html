@@ -1,0 +1,26 @@
+<!--Module dashboard component: Wallets-->
+<div class="wallets">
+  <h2>Wallets</h2>
+  <!--Module dashboard component: Wallets-->
+  <div>
+    <!--Module dashboard component: Wallets-list-->
+    <div class="wallets-list">
+      <!--Module dashboard component: Wallet-->
+      <div *ngFor="let wallet of walletList" class="wallet-items">
+        <mat-card class="wallet">
+          <mat-card-title class="wallet-title">{{wallet.title}}</mat-card-title>
+          <mat-card-subtitle class="wallet-type">{{wallet.type}}</mat-card-subtitle>
+          <mat-card-content class="wallet-value">{{wallet.balance}}</mat-card-content>
+        </mat-card>
+      </div>
+      <!--End Module dashboard component: Wallet-->
+    </div>
+    <!--End Module dashboard component: Wallets-list-->
+    <mat-card class="wallet-add">
+      <mat-icon class="add-icon">
+        <span class="material-icons">add_box</span>
+      </mat-icon>
+    </mat-card>
+  </div>
+</div>
+<!--End Module dashboard component: Wallets-->
