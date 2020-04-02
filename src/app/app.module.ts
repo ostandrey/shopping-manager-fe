@@ -19,6 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {WalletModule} from './wallet/wallet.module';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    WalletModule
   ],
   providers: [],
   bootstrap: [AppComponent]
