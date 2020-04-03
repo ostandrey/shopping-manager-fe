@@ -20,11 +20,12 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {WalletModule} from './wallet/wallet.module';
-
+import {WalletOverviewModule} from './wallet-overview/wallet-overview.module';
 
 @NgModule({
   declarations: [
-    AppComponent  ],
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,7 +45,8 @@ import {WalletModule} from './wallet/wallet.module';
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    WalletModule
+    WalletModule,
+    WalletOverviewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

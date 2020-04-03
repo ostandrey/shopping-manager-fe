@@ -2,11 +2,6 @@ import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 
-interface IWallet {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,11 +9,4 @@ interface IWallet {
 })
 export class AppComponent {
   title = 'shopping-manager-fe';
-  Wallets: Array<IWallet> = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
 }

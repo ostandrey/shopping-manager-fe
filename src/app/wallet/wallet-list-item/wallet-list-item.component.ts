@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 interface IWalletListItem {
+  value: string;
   title: string;
   type: string;
   balance: number;
