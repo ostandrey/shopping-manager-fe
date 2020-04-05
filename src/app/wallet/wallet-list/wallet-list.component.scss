@@ -6,42 +6,16 @@ h2{
   padding-top: 3vmin;
 }
 
+//all displays are flex. Wallets-list with *flex-wrap* + overflow-x
 .wallets-list{
   display: inline-block;
   width: 85%;
+  //overflow-x: auto;
 }
 
 .wallet-items{
   display: inline-block;
-}
-
-.wallet{
-  display: inline-block;
-  height: 10vmin;
-  width: 22vmin;
-  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
-  cursor: pointer;
-}
-
-.wallet:hover{
-  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
-}
-
-.wallet-title{
-  font-size: 2vmin;
-  color: #324c5b;
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.wallet-value{
-  font-size: 3vmin;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  color: #2dba75;
+  margin-right: 1vmin;
 }
 
 .wallet-add{
