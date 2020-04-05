@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 interface IWalletListItem {
-  value: string;
+  id: number;
   title: string;
   type: string;
   balance: number;
@@ -15,8 +15,8 @@ interface IWalletListItem {
 export class WalletListComponent {
 
   walletList: IWalletListItem[] = [
-    {value: '0', title: 'My-wallet', type: 'Cash', balance: 12313},
-    {value: '1', title: 'Wallets', type: 'Cash', balance: 54643},
-    {value: '2', title: 'My-wallet', type: 'Cash', balance: 12313}
+    {id: 0, title: 'My-wallet', type: 'Cash', balance: 12313},
+    {id: 1, title: 'Wallets', type: 'Cash', balance: 54643},
+    {id: 2, title: 'My-wallet', type: 'Cash', balance: 12313}
   ];
 }

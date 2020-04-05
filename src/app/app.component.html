@@ -3,39 +3,6 @@
 </mat-toolbar>
 <section>
   <div id="container">
-    <app-wallet-list></app-wallet-list>
-    <app-wallet-overview></app-wallet-overview>
-    <!--Module dashboard component: Calculations-->
-    <div class="calculation">
-      <!--Module dashboard component: Calculation-list-->
-      <div class="calculation-list">
-        <!--Card component: Total balance-->
-        <mat-card class="calculation-card">
-          <mat-card-title class="calculation-title">Total Balance</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-        </mat-card>
-        <!--End Card component: Total balance-->
-        <!--Card component: Total Period Change-->
-        <mat-card class="calculation-card">
-          <mat-card-title class="calculation-title">Total Period Change</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-        </mat-card>
-        <!--End Card component: Total Period Change-->
-        <!--Card component: Total Period Expenses-->
-        <mat-card class="calculation-card">
-          <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-        </mat-card>
-        <!--End Card component: Total Period Expenses-->
-        <!--Card component: Total Period Income-->
-        <mat-card class="calculation-card">
-          <mat-card-title class="calculation-title">Total Period Income</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-        </mat-card>
-        <!--End Card component: Total Period Income-->
-      </div>
-      <!--End Module dashboard component: Calculation-list-->
-    </div>
-    <!--End Module dashboard component: Calculations-->
+    <router-outlet></router-outlet>
   </div>
 </section>

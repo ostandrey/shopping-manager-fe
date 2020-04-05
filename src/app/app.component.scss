@@ -21,37 +21,3 @@ h2{
   height: 100%;
   margin: 0 auto;
 }
-
-.calculation{
-  padding-top: 5vmin;
-}
-
-.calculation-list{
-  display: flex;
-  justify-content: space-between;
-  overflow-x: auto;
-}
-
-.calculation-card{
-  height: 5vmin;
-  width: 20vmin;
-  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
-}
-
-.calculation-title{
-  font-size: 1.7vmin;
-  color: #324c5b;
-  margin-bottom: 0.3em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.calculate-value{
-  line-height: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 2.5vmin;
-  color: #2dba75;
-}
-
