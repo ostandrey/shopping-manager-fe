@@ -1,0 +1,94 @@
+.wallet-id{
+  padding-top: 5vmin;
+}
+
+.wallet-add-transaction{
+  margin-top: 1vmin;
+}
+
+.btn-add-transaction{
+  background-color: #12c48b;
+  color: #fff;
+  box-shadow: 0 4px 4px 0 rgba(17, 195, 139, .2);
+  padding: 0.8vmin 2vmin;
+  font-size: 1.8vmin;
+}
+
+.transaction-filters{
+  padding-top: 3vmin;
+}
+
+.filter-card{
+  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+}
+
+.filter-title{
+  font-weight: 600;
+  font-size: 2vmin;
+  color: #324c5b;
+}
+
+.filters{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1vmin;
+  overflow-x: auto;
+}
+
+.filter{
+  margin: 0 5px;
+}
+
+.input-field{
+  font-size: 1.8vmin;
+  color: #7b93a4;
+}
+
+.filter-label{
+  font-size: 1.8vmin;
+  color: #7b93a4;
+}
+
+.calculation{
+  padding-top: 5vmin;
+}
+
+.calculation-list{
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.calculation-card{
+  height: 5vmin;
+  width: 20vmin;
+  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+}
+
+.calculation-title{
+  font-size: 1.7vmin;
+  color: #324c5b;
+  margin-bottom: 0.3em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calculate-value{
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 2.5vmin;
+  color: #2dba75;
+}
+
+.transaction-list{
+  padding-top: 5vmin;
+}
+
+.transaction-table{
+  width: 100%;
+  overflow-y: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+}

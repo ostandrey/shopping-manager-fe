@@ -12,11 +12,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ReactiveFormsModule} from '@angular/forms';
 import { WalletIDComponent } from './wallet-id/wallet-id.component';
-
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatTableModule} from '@angular/material/table';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
+import {FormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TransactionService} from './service-transaction/transaction.service';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
-  declarations: [WalletListComponent, WalletListItemComponent, WalletDashboardComponent, WalletOverviewComponent, WalletIDComponent],
+  declarations: [WalletListComponent, WalletListItemComponent, WalletDashboardComponent, WalletOverviewComponent, WalletIDComponent, AddTransactionComponent],
   exports: [
     WalletListComponent,
     WalletOverviewComponent,
@@ -30,7 +36,14 @@ import { WalletIDComponent } from './wallet-id/wallet-id.component';
     MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatTableModule,
+    FormsModule,
+    MatDialogModule,
+    MatSortModule
+  ],
+  providers: [TransactionService]
 })
 export class WalletModule { }
