@@ -1,0 +1,56 @@
+.container{
+  width: 130vmin;
+}
+
+.transaction-filters{
+  padding-top: 3vmin;
+}
+
+.filter-card{
+  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+}
+
+.filter-title{
+  font-weight: 600;
+  font-size: 2vmin;
+  color: #324c5b;
+}
+
+.filters{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1vmin;
+}
+
+.input-field{
+  font-size: 1.8vmin;
+  color: #7b93a4;
+}
+
+.filter-label{
+  font-size: 1.8vmin;
+  color: #7b93a4;
+}
+
+#filter-note{
+  width: 50vmin;
+}
+
+.btn-container{
+  float: right;
+}
+
+#btn-add{
+  background-color: #12c48b;
+  color: #fff;
+  box-shadow: 0 4px 4px 0 rgba(17, 195, 139, .2);
+  margin: 3px;
+}
+
+#btn-cancel{
+  background-color: rgba(218, 0, 19, 0.99);
+  color: #fff;
+  box-shadow: 0 4px 4px 0 rgba(181, 0, 19, 0.2);
+  margin: 3px;
+}
+

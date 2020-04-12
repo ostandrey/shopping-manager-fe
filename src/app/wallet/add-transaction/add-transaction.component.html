@@ -1,0 +1,59 @@
+<div class="container">
+  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <div>
+      <!--Module dashboard component: Filters-->
+      <mat-card-content class="filters">
+        <!--Card component: Note filter-->
+        <mat-form-field class="filter">
+          <mat-label class="filter-label">Amount</mat-label>
+          <input matInput type="text" class="input-field" formControlName="amount">
+        </mat-form-field>
+        <!--End Card component: Note filter-->
+        <!--Card component: Wallet filter-->
+        <mat-form-field class="filter">
+          <mat-label class="filter-label">Category</mat-label>
+          <!--Filter component: Select wallet-->
+          <mat-select class="input-field" formControlName="category">
+
+
+            <mat-tab-group>
+              <mat-tab label="Expenses" class="tab">
+                <mat-option *ngFor="let category of CategoryExpenses" value="{{category.viewValue}}">
+                  {{category.viewValue}}
+                </mat-option>
+              </mat-tab>
+
+              <mat-tab label="Incomes">
+                <mat-option  *ngFor="let category of CategoryIncomes" value="{{category.viewValue}}">
+                  {{category.viewValue}}
+                </mat-option>
+              </mat-tab>
+
+            </mat-tab-group>
+          </mat-select>
+        </mat-form-field>
+        <!--End Card component: Wallet filter-->
+        <!--Card component: Note filter-->
+        <mat-form-field class="filter" id="filter-note">
+          <mat-label class="filter-label">Description</mat-label>
+          <input matInput type="text" class="input-field" formControlName="description">
+        </mat-form-field>
+        <!--End Card component: Note filter-->
+        <!--Card component: Start date filter-->
+        <mat-form-field class="filter">
+          <mat-label class="filter-label">Date</mat-label>
+          <!--Filter component: Select Start date-->
+          <input matInput class="input-field" [matDatepicker]="picker1" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <!--End Card component: Start date filter-->
+      </mat-card-content>
+      <!--End Module dashboard component: Filters-->
+    </div>
+    <div mat-dialog-actions class="btn-container">
+      <button mat-button type="submit" id="btn-add" [mat-dialog-close]="inputForm.value">Add transaction</button>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+  </form>
+</div>
