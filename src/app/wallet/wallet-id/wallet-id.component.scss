@@ -83,12 +83,58 @@
 }
 
 .transaction-list{
-  padding-top: 5vmin;
+  margin-top: 5vmin;
+  overflow: auto;
+  height: 30vmin;
 }
 
 .transaction-table{
   width: 100%;
-  overflow-y: auto;
+  overflow: auto;
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+  table-layout: fixed;
+}
+
+.table-title{
+  font-weight: 600;
+  font-size: 2vmin;
+  color: #324c5b;
+}
+
+.amount-column{
+  width: 20%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.8vmin;
+  color: #2dba75;
+}
+
+.category-column{
+  width: 15%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.description-column{
+  width: 50%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.date-column{
+  width: 10vmin;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+th, td {
+  overflow: hidden;
+  width:auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -18,15 +18,25 @@ import {MatTableModule} from '@angular/material/table';
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
-import {TransactionService} from './service-transaction/transaction.service';
 import {MatSortModule} from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
-  declarations: [WalletListComponent, WalletListItemComponent, WalletDashboardComponent, WalletOverviewComponent, WalletIDComponent, AddTransactionComponent],
+  declarations: [WalletListComponent,
+    WalletListItemComponent,
+    WalletDashboardComponent,
+    WalletOverviewComponent,
+    WalletIDComponent,
+    AddTransactionComponent
+  ],
+  entryComponents: [
+    AddTransactionComponent
+  ],
   exports: [
     WalletListComponent,
     WalletOverviewComponent,
-    WalletDashboardComponent
+    WalletDashboardComponent,
+    AddTransactionComponent
   ],
   imports: [
     CommonModule,
@@ -42,8 +52,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatTableModule,
     FormsModule,
     MatDialogModule,
-    MatSortModule
-  ],
-  providers: [TransactionService]
+    MatSortModule,
+    MatTabsModule
+  ]
 })
 export class WalletModule { }

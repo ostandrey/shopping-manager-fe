@@ -1,52 +1,78 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {AddTransactionComponent} from '../add-transaction/add-transaction.component';
+
 
 interface IWallet {
   value: string;
   viewValue: string;
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface ITransaction {
+  amount: string;
+  category: string;
+  description: string;
+  dateTable: number;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-];
 
 @Component({
   selector: 'app-wallet-id',
   templateUrl: './wallet-id.component.html',
   styleUrls: ['./wallet-id.component.scss']
 })
+
 export class WalletIDComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  ELEMENT_DATA: ITransaction[] = [];
+
+  data: ITransaction;
+
+  displayedColumns: string[] = ['amount', 'category', 'description', 'date'];
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   Wallets: Array<IWallet> = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    {value: '0', viewValue: 'Food & Drink'},
+    {value: '1', viewValue: 'Shopping'},
+    {value: '2', viewValue: 'Transport'},
+    {value: '3', viewValue: 'Home'},
+    {value: '4', viewValue: 'Bills % Fees'},
+    {value: '5', viewValue: 'Entertainment'},
+    {value: '6', viewValue: 'Car'},
+    {value: '7', viewValue: 'Travel'},
+    {value: '8', viewValue: 'Healthcare'},
+    {value: '9', viewValue: 'Education'},
+    {value: '10', viewValue: 'Gifts'},
+    {value: '11', viewValue: 'Sport & Hobbies'},
+    {value: '12', viewValue: 'Beauty'},
+    {value: '13', viewValue: 'Work'},
+    {value: '14', viewValue: 'Other'},
   ];
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
 
-  constructor() { }
+   date = new FormControl(new Date());
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.sort;
+   this.dataSource.sort = this.sort;
   }
 
+  addTransaction() {
+    const dialogRef = this.dialog.open(AddTransactionComponent, {
+      data: { }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.dataSource.data = this.dataSource.data.concat(result);
+        // this.dataSource.data = [result, ...this.dataSource.data];
+        console.log(this.ELEMENT_DATA);
+      }
+    });
+  }
 }
