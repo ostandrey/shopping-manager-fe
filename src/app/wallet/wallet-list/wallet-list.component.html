@@ -6,7 +6,7 @@
     <!--Module dashboard component: Wallets-list-->
     <div class="wallets-list">
       <!--Module dashboard component: Wallet-->
-      <div  class="wallet-items" *ngFor="let wallet of walletList">
+      <div  class="wallet-items" *ngFor="let wallet of walletList | async">
         <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
       </div>
       <!--End Module dashboard component: Wallet-->

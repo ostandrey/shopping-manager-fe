@@ -20,6 +20,9 @@ import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
+import { HttpClientModule} from '@angular/common/http';
+import {WalletService} from './services/wallet-service';
+import {WalletResource} from './services/wallet-resource';
 
 @NgModule({
   declarations: [WalletListComponent,
@@ -53,7 +56,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     FormsModule,
     MatDialogModule,
     MatSortModule,
-    MatTabsModule
-  ]
+    MatTabsModule,
+    HttpClientModule
+  ],
+  providers: [WalletService, WalletResource],
 })
 export class WalletModule { }

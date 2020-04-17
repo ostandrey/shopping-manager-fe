@@ -6,6 +6,13 @@ h2{
   padding-top: 3vmin;
 }
 
+.wallets-container{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
 //all displays are flex. Wallets-list with *flex-wrap* + overflow-x
 .wallets-list{
   display: inline-block;

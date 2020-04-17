@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {WalletService} from '../services/wallet-service';
+import {Observable} from 'rxjs';
 
 interface IWalletListItem {
   id: number;
@@ -12,11 +14,15 @@ interface IWalletListItem {
   templateUrl: './wallet-list.component.html',
   styleUrls: ['./wallet-list.component.scss']
 })
-export class WalletListComponent {
+export class WalletListComponent implements OnInit {
 
-  walletList: IWalletListItem[] = [
-    {id: 0, title: 'My-wallet', type: 'Cash', balance: 12313},
-    {id: 1, title: 'Wallets', type: 'Cash', balance: 54643},
-    {id: 2, title: 'My-wallet', type: 'Cash', balance: 12313}
-  ];
+  walletList: Observable<IWalletListItem[]>
+
+  constructor(private walletService: WalletService) {
+  }
+
+  ngOnInit(): void {
+    this.walletList = this.walletService.getAllWalletItems();
+  }
+
 }
