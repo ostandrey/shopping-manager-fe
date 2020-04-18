@@ -14,8 +14,6 @@
           <mat-label class="filter-label">Category</mat-label>
           <!--Filter component: Select wallet-->
           <mat-select class="input-field" formControlName="category">
-
-
             <mat-tab-group>
               <mat-tab label="Expenses" class="tab">
                 <mat-option *ngFor="let category of CategoryExpenses" value="{{category.viewValue}}">
@@ -28,7 +26,6 @@
                   {{category.viewValue}}
                 </mat-option>
               </mat-tab>
-
             </mat-tab-group>
           </mat-select>
         </mat-form-field>
