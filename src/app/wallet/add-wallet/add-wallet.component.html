@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="inputForm">
+    <div>
+      <!--Module dashboard component: Filters-->
+      <mat-card-content class="filters">
+        <!--Card component: Note filter-->
+        <mat-form-field class="filter">
+          <mat-label class="filter-label">Name of wallet</mat-label>
+          <input matInput type="text" class="input-field" formControlName="title">
+        </mat-form-field>
+        <!--End Card component: Note filter-->
+        <!--Card component: Wallet filter-->
+        <mat-form-field class="filter">
+          <mat-label class="filter-label">Storage</mat-label>
+          <!--Filter component: Select wallet-->
+          <mat-select class="input-field" formControlName="type">
+            <mat-option *ngFor="let category of CategoryType" value="{{category.viewValue}}">
+              {{category.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--End Card component: Wallet filter-->
+        <!--Card component: Note filter-->
+        <mat-form-field class="filter" id="filter-note">
+          <mat-label class="filter-label">Balance</mat-label>
+          <input matInput type="text" class="input-field" formControlName="balance" placeholder="0.00">
+        </mat-form-field>
+        <!--End Card component: Note filter-->
+      </mat-card-content>
+      <!--End Module dashboard component: Filters-->
+    </div>
+    <div mat-dialog-actions class="btn-container">
+      <button mat-button type="submit" id="btn-add" [mat-dialog-close]="inputForm.value">Add transaction</button>
+      <button mat-button (click)="onNoClick()" id="btn-cancel">Cancel</button>
+    </div>
+  </form>
+</div>
