@@ -23,6 +23,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule} from '@angular/common/http';
 import {WalletService} from './services/wallet-service';
 import {WalletResource} from './services/wallet-resource';
+import { AddWalletComponent } from './add-wallet/add-wallet.component';
 
 @NgModule({
   declarations: [WalletListComponent,
@@ -30,7 +31,8 @@ import {WalletResource} from './services/wallet-resource';
     WalletDashboardComponent,
     WalletOverviewComponent,
     WalletIDComponent,
-    AddTransactionComponent
+    AddTransactionComponent,
+    AddWalletComponent
   ],
   entryComponents: [
     AddTransactionComponent
