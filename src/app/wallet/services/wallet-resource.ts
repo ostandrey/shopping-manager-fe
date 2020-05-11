@@ -10,6 +10,6 @@ export class WalletResource {
   constructor(private httpClient: HttpClient) {
   }
   public findAll(): Observable<IWalletListItem[]> {
-    return this.httpClient.get(this.URL) as Observable<IWalletListItem[]>;
+     return this.httpClient.get(this.URL) as Observable<IWalletListItem[]>;
   }
 }

@@ -1,0 +1,32 @@
+<div>
+  <div>
+    Username: test<br />
+    Password: test
+  </div>
+  <div>
+    <h4>Angular 8 JWT Login Example</h4>
+    <div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="username">Username</label>
+          <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" >
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" >
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading"></span>
+          Login
+        </button>
+        <div *ngIf="error">{{error}}</div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../user/user';
+import {UserService} from '../../user/user.service';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-wallet-dashboard',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wallet-dashboard.component.scss']
 })
 export class WalletDashboardComponent implements OnInit {
+  loading = false;
+  users: User[];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.userService.getAll().pipe(first()).subscribe(users => {
+      console.log(users);
+      this.loading = false;
+      this.users = users;
+    });
   }
 
 }
