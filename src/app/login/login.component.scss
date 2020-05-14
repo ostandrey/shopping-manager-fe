@@ -1,0 +1,30 @@
+.login-form{
+  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 32px;
+  color: #7b93a4;
+}
+
+#login-header{
+  margin: auto;
+  text-align: center;
+  color: #324c5b;
+}
+
+#login-section{
+  width: 50%;
+  margin: auto;
+}
+
+.login-field{
+  width: 100%;
+  color: #7b93a4;
+}
+
+#btn-login{
+  width: 100%;
+  background-color: #e5ebee;
+  color: #7b93a4;
+}
