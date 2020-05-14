@@ -6,9 +6,12 @@
     <!--Module dashboard component: Wallets-list-->
     <div class="wallets-list">
       <!--Module dashboard component: Wallet-->
-      <div  class="wallet-items" *ngFor="let wallet of walletList | async">
-        <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
+      <div *ngIf="walletList && walletList.length > 0; else noWalletList">
+        <div  class="wallet-items" *ngFor="let wallet of walletList">
+          <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
+        </div>
       </div>
+      <ng-template #noWalletList>There is no any wallet yet</ng-template>
       <!--End Module dashboard component: Wallet-->
     </div>
     <!--End Module dashboard component: Wallets-list-->

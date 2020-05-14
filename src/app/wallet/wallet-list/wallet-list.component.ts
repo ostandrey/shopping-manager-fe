@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {WalletService} from '../services/wallet-service';
-import {Observable} from 'rxjs';
 import {AddWalletComponent} from '../add-wallet/add-wallet.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
+import {first} from 'rxjs/operators';
+import {UserService} from '../../user/user.service';
 
 
 interface IWalletListItem {
@@ -19,14 +20,22 @@ interface IWalletListItem {
 })
 export class WalletListComponent implements OnInit {
 
-  walletList: Observable<IWalletListItem[]>;
+  walletList: IWalletListItem[];
 
-  constructor(private walletService: WalletService,
-              private dialog: MatDialog) {
-  }
+  constructor(
+    private userService: UserService,
+    private walletService: WalletService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.walletList = this.walletService.getAllWalletItems();
+    this.userService.getUser()
+      .pipe(first())
+      .subscribe(
+        ({wallet, ...args}) => {
+          this.walletList = wallet;
+        }
+      );
   }
 
   addWallet() {

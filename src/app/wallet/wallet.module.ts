@@ -22,7 +22,6 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule} from '@angular/common/http';
 import {WalletService} from './services/wallet-service';
-import {WalletResource} from './services/wallet-resource';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
 
 @NgModule({
@@ -61,6 +60,6 @@ import { AddWalletComponent } from './add-wallet/add-wallet.component';
     MatTabsModule,
     HttpClientModule
   ],
-  providers: [WalletService, WalletResource],
+  providers: [WalletService],
 })
 export class WalletModule { }
