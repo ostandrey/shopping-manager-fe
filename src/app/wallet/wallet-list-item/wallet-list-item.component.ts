@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-interface IWalletListItem {
+interface IWallet {
   id: number;
   title: string;
-  type: string;
+  type: {id: number, name: string};
   balance: number;
 }
 
@@ -14,7 +14,7 @@ interface IWalletListItem {
   styleUrls: ['./wallet-list-item.component.scss']
 })
 export class WalletListItemComponent {
-  @Input() wallet: IWalletListItem;
+  @Input() wallet: IWallet;
   constructor(private router: Router) {}
   navigate(): void {
     this.router.navigate([`/dashboard/${this.wallet.id}`]);

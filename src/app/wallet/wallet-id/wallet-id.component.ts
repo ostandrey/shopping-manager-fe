@@ -1,19 +1,21 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {AddTransactionComponent} from '../add-transaction/add-transaction.component';
+import {UserService} from '../../user/user.service';
+import {WalletService} from '../services/wallet-service';
+import {first} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {IWallet} from '../services/dataWallet/wallet-list-item';
 
 
-interface IWallet {
-  value: string;
-  viewValue: string;
-}
 
 export interface ITransaction {
   amount: string;
-  category: string;
+  category: {id: number, name: string};
   description: string;
   dateTable: number;
 }
@@ -26,39 +28,28 @@ export interface ITransaction {
 
 export class WalletIDComponent implements OnInit {
 
-  ELEMENT_DATA: ITransaction[] = [];
-
-  data: ITransaction;
+  transactionList: ITransaction[];
 
   displayedColumns: string[] = ['amount', 'category', 'description', 'date'];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.transactionList);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  Wallets: Array<IWallet> = [
-    {value: '0', viewValue: 'Food & Drink'},
-    {value: '1', viewValue: 'Shopping'},
-    {value: '2', viewValue: 'Transport'},
-    {value: '3', viewValue: 'Home'},
-    {value: '4', viewValue: 'Bills % Fees'},
-    {value: '5', viewValue: 'Entertainment'},
-    {value: '6', viewValue: 'Car'},
-    {value: '7', viewValue: 'Travel'},
-    {value: '8', viewValue: 'Healthcare'},
-    {value: '9', viewValue: 'Education'},
-    {value: '10', viewValue: 'Gifts'},
-    {value: '11', viewValue: 'Sport & Hobbies'},
-    {value: '12', viewValue: 'Beauty'},
-    {value: '13', viewValue: 'Work'},
-    {value: '14', viewValue: 'Other'},
-  ];
+  date = new FormControl(new Date());
+  wallet$: Observable<IWallet>;
 
-   date = new FormControl(new Date());
-
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private walletService: WalletService,
+  ) { }
 
   ngOnInit(): void {
-   this.dataSource.sort = this.sort;
+    this.wallet$ = this.walletService.wallet;
+    const walletId = this.route.snapshot.paramMap.get('walletId');
+    this.walletService.getWalletById(walletId);
+    this.dataSource.sort = this.sort;
   }
 
   addTransaction() {
@@ -67,11 +58,9 @@ export class WalletIDComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.dataSource.data = this.dataSource.data.concat(result);
         // this.dataSource.data = [result, ...this.dataSource.data];
-        console.log(this.ELEMENT_DATA);
       }
     });
   }

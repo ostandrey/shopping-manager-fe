@@ -4,14 +4,11 @@ import {AddWalletComponent} from '../add-wallet/add-wallet.component';
 import {MatDialog} from '@angular/material/dialog';
 import {first} from 'rxjs/operators';
 import {UserService} from '../../user/user.service';
+import {User} from '../../user/user';
+import {Observable} from 'rxjs';
+import {IWallet} from '../services/dataWallet/wallet-list-item';
 
 
-interface IWalletListItem {
-  id: number;
-  title: string;
-  type: string;
-  balance: number;
-}
 
 @Component({
   selector: 'app-wallet-list',
@@ -20,7 +17,7 @@ interface IWalletListItem {
 })
 export class WalletListComponent implements OnInit {
 
-  walletList: IWalletListItem[];
+  walletList: IWallet[];
 
   constructor(
     private userService: UserService,
@@ -29,13 +26,12 @@ export class WalletListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUser()
-      .pipe(first())
-      .subscribe(
-        ({wallet, ...args}) => {
-          this.walletList = wallet;
-        }
-      );
+    this.userService.user.subscribe(
+      (data: User) => {
+        this.walletList = data.wallet;
+      }
+    );
+    this.userService.getUser();
   }
 
   addWallet() {
@@ -43,7 +39,7 @@ export class WalletListComponent implements OnInit {
       data: { }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.userService.getUser();
     });
   }
 }

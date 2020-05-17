@@ -20,9 +20,7 @@
           <mat-label class="filter-label">By category</mat-label>
           <!--Filter component: Select wallet-->
           <mat-select class="input-field">
-            <mat-option  *ngFor="let wallet of Wallets" [value]="wallet.value">
-              {{wallet.viewValue}}
-            </mat-option>
+            Categories
           </mat-select>
         </mat-form-field>
         <!--End Card component: Wallet filter-->
@@ -89,9 +87,13 @@
   </div>
     <!--End Module dashboard component: Calculations-->
  <!--Module dashboard component: Transaction List-->
-  <div class="transaction-list">
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 transaction-table">
-
+  <div class="transaction-list"
+       *ngIf="(wallet$ | async).transaction && (wallet$ | async).transaction.length > 0;
+       else noTransactionList"
+  >
+    <table mat-table [dataSource]="(wallet$ | async).transaction" matSort
+           class="mat-elevation-z8 transaction-table"
+    >
       <!-- Position Column -->
       <ng-container matColumnDef="amount">
         <th mat-header-cell class="table-title" *matHeaderCellDef mat-sort-header> Amount </th>
@@ -104,7 +106,7 @@
       <ng-container matColumnDef="category" >
         <th mat-header-cell class="table-title" *matHeaderCellDef mat-sort-header> Category </th>
         <div class="category-column">
-          <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
         </div>
       </ng-container>
 
@@ -128,6 +130,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+  <ng-template #noTransactionList>There is no any transaction yet</ng-template>
   <!--End Module dashboard component: Transaction List-->
 </div>
 

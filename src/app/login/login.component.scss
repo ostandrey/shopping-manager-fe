@@ -1,3 +1,6 @@
+#container{
+  padding-top: 40px;
+}
 .login-form{
   box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
   max-width: 560px;
@@ -7,13 +10,17 @@
   color: #7b93a4;
 }
 
-#login-header{
+.tab{
+  margin: 15px 0;
+}
+
+.login-header{
   margin: auto;
   text-align: center;
   color: #324c5b;
 }
 
-#login-section{
+.login-section{
   width: 50%;
   margin: auto;
 }
@@ -23,7 +30,7 @@
   color: #7b93a4;
 }
 
-#btn-login{
+.btn-login{
   width: 100%;
   background-color: #e5ebee;
   color: #7b93a4;

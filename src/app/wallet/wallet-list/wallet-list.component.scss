@@ -9,21 +9,22 @@ h2{
 .wallets-container{
   display: flex;
   flex-wrap: nowrap;
-  height: 15vmin;
+  height: 20vmin;
 }
 
 //all displays are flex. Wallets-list with *flex-wrap* + overflow-x
 .wallets-list{
   display: flex;
-  width: 89%;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding: 10px 0;
+  width: 75%;
+  overflow: hidden;
+  padding: 1vmin 0;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .wallet-items{
   display: inline-block;
-  margin-right: 1vmin;
+  margin: 0 0.5vmin;
 }
 
 .wallet-add{
@@ -34,12 +35,12 @@ h2{
 
 .btn-add-wallet{
   width: 18vmin;
-  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
   cursor: pointer;
   color: #12c48b;
 }
 
 .material-icons{
 
-  font-size: 7vmin;
+  font-size: 5vmin;
 }

@@ -11,6 +11,7 @@ import {UserService} from '../user/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  signUpForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -32,6 +33,13 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
+    });
+
+    this.signUpForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'

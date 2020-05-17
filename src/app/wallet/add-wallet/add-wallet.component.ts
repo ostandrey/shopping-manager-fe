@@ -3,9 +3,9 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {FormControl, FormGroup} from '@angular/forms';
 import {ITransaction} from '../add-transaction/add-transaction.component';
 
-interface ICategoryType {
-  value: string;
-  viewValue: string;
+export interface IWalletTypes {
+  id: number;
+  name: string;
 }
 
 @Component({
@@ -15,16 +15,20 @@ interface ICategoryType {
 })
 export class AddWalletComponent implements OnInit {
 
-  public inputForm: FormGroup;
+  userId: number;
+  inputForm: FormGroup;
 
-  CategoryType: Array<ICategoryType> = [
-    {value: '0', viewValue: 'Cash'},
-    {value: '1', viewValue: 'Bank card'},
+  walletTypes: Array<IWalletTypes> = [
+    {id: 0, name: 'Cash'},
+    {id: 1, name: 'Bank card'},
   ];
 
-  constructor(public dialog: MatDialog,
-              public dialogRef: MatDialogRef<AddWalletComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ITransaction) {
+  constructor(
+    public dialogRef: MatDialogRef<AddWalletComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ITransaction,
+    private walletService: WalletService,
+    private userService: UserService
+  ) {
     this.inputForm = new FormGroup({
       id: new FormControl(),
       title: new FormControl(),
@@ -34,10 +38,32 @@ export class AddWalletComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.user.subscribe(
+      (data: User) => {
+        this.userId = data.id;
+      }
+    );
+    this.walletService.getWalletTypes()
+      .subscribe(
+        (data: IWalletTypes[]) => {
+          this.walletTypes = data;
+        }
+      );
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit() {
+    const {type, title, balance} = this.inputForm.value;
+    const body = {
+      type: Number(type),
+      title,
+      balance: Number(balance),
+      user: this.userId
+    };
+    this.walletService.addWallet(body);
   }
 
 }

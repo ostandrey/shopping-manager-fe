@@ -1,34 +1,73 @@
-<div>
+<div id="container">
   <mat-card class="login-form">
-    <div id="login-header">
-      <h1>Login to MoneyManager</h1>
-    </div>
-    <div id="login-section">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="login-field">
-          <mat-form-field appearance="outline" class="login-field">
-            <mat-label for="username">Login</mat-label>
-            <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-            <div *ngIf="submitted && f.username.errors" >
-              <div *ngIf="f.username.errors.required">Username is required</div>
-            </div>
-          </mat-form-field>
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Login" >
+        <div class="tab">
+          <div class="login-header">
+            <h1>Login to MoneyManager</h1>
+          </div>
+          <div class="login-section">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="login-field">
+                <mat-form-field appearance="outline" class="login-field">
+                  <mat-label for="username">Login</mat-label>
+                  <input matInput type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                  <div *ngIf="submitted && f.username.errors" >
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                  </div>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline" class="login-field">
+                  <mat-label for="password">Password</mat-label>
+                  <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <div *ngIf="submitted && f.password.errors" >
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                  </div>
+                </mat-form-field>
+              </div>
+              <button mat-raised-button [disabled]="loading" class="btn-login">
+                <span *ngIf="loading"></span>
+                Login
+              </button>
+              <div *ngIf="error">{{error}}</div>
+            </form>
+          </div>
         </div>
-        <div>
-          <mat-form-field appearance="outline" class="login-field">
-            <mat-label for="password">Password</mat-label>
-            <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-            <div *ngIf="submitted && f.password.errors" >
-              <div *ngIf="f.password.errors.required">Password is required</div>
-            </div>
-          </mat-form-field>
+      </mat-tab>
+      <mat-tab label="Sign up">
+        <div class="tab">
+          <div class="login-header">
+            <h1>Sign up to MoneyManager</h1>
+          </div>
+          <div class="login-section">
+            <form [formGroup]="signUpForm">
+              <div class="login-field">
+                <mat-form-field appearance="outline" class="login-field">
+                  <mat-label>Login</mat-label>
+                  <input matInput type="text" formControlName="username" class="form-control">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="login-field">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="text" formControlName="username" class="form-control">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="login-field">
+                  <mat-label>First Name</mat-label>
+                  <input matInput type="text" formControlName="username" class="form-control">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="login-field">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput type="text" formControlName="username" class="form-control">
+                </mat-form-field>
+              </div>
+              <button mat-raised-button [disabled]="loading" class="btn-login">
+                <span *ngIf="loading"></span>
+                Login
+              </button>
+            </form>
+          </div>
         </div>
-        <button mat-raised-button [disabled]="loading" id="btn-login">
-          <span *ngIf="loading"></span>
-          Login
-        </button>
-        <div *ngIf="error">{{error}}</div>
-      </form>
-    </div>
+      </mat-tab>
+    </mat-tab-group>
   </mat-card>
 </div>

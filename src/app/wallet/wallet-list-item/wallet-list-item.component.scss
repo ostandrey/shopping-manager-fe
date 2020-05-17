@@ -1,13 +1,13 @@
 .wallet{
   display: inline-block;
-  height: 10vmin;
+  height: 13vmin;
   width: 22vmin;
-  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
+  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
   cursor: pointer;
 }
 
 .wallet:hover{
-  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .2);
 }
 
 .wallet-title{
@@ -20,10 +20,9 @@
 }
 
 .wallet-value{
-  font-size: 3vmin;
+  font-size: 2.5vmin;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: #2dba75;
 }
 
