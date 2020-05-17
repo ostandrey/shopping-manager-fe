@@ -1,8 +1,10 @@
 <div class="container">
-  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
-    <div>
+  <div>
+    <mat-card-title>Add a new transaction</mat-card-title>
+    <mat-card-subtitle>Fill the form to add a new transaction to the wallet</mat-card-subtitle>
       <!--Module dashboard component: Filters-->
       <mat-card-content class="filters">
+        <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
         <!--Card component: Note filter-->
         <mat-form-field class="filter">
           <mat-label class="filter-label">Amount</mat-label>
@@ -44,6 +46,7 @@
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
+        </form>
         <!--End Card component: Start date filter-->
       </mat-card-content>
       <!--End Module dashboard component: Filters-->
@@ -52,5 +55,4 @@
       <button mat-button type="submit" id="btn-add" [mat-dialog-close]="inputForm.value">Add transaction</button>
       <button mat-button (click)="onNoClick()">Cancel</button>
     </div>
-  </form>
 </div>

@@ -2,7 +2,13 @@
 <div class="wallets">
   <h2>Wallets</h2>
   <!--Module dashboard component: Wallets-->
+  <h3>Tracked cards: {{walletList.length}}</h3>
   <div class="wallets-container">
+    <button mat-button>
+        <span class="material-icons">
+          keyboard_arrow_left
+        </span>
+    </button>
     <!--Module dashboard component: Wallets-list-->
     <div class="wallets-list">
       <!--Module dashboard component: Wallet-->
@@ -14,11 +20,16 @@
       <ng-template #noWalletList>There is no any wallet yet</ng-template>
       <!--End Module dashboard component: Wallet-->
     </div>
+    <button mat-button>
+        <span class="material-icons">
+          keyboard_arrow_right
+        </span>
+    </button>
     <!--End Module dashboard component: Wallets-list-->
     <div class="wallet-add">
-      <button mat-raised-button class="btn-add-wallet" (click)="addWallet()">
+      <button mat-button (click)="addWallet()">
         <span class="material-icons">
-          add_box
+          add_circle_outline
         </span>
       </button>
     </div>

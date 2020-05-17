@@ -1,5 +1,5 @@
 .container{
-  width: 30vmin;
+  width: 40vmin;
 }
 
 .filters{
@@ -21,18 +21,4 @@
 
 .btn-container{
   float: right;
-}
-
-#btn-add{
-  background-color: #12c48b;
-  color: #fff;
-  box-shadow: 0 4px 4px 0 rgba(17, 195, 139, .2);
-  margin: 3px;
-}
-
-#btn-cancel{
-  background-color: rgba(218, 0, 19, 0.99);
-  color: #fff;
-  box-shadow: 0 4px 4px 0 rgba(181, 0, 19, 0.2);
-  margin: 3px;
 }

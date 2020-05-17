@@ -1,7 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ITransaction} from '../add-transaction/add-transaction.component';
+import {WalletService} from '../services/wallet-service';
+import {UserService} from '../../user/user.service';
+import {User} from '../../user/user';
 
 export interface IWalletTypes {
   id: number;
@@ -30,10 +33,9 @@ export class AddWalletComponent implements OnInit {
     private userService: UserService
   ) {
     this.inputForm = new FormGroup({
-      id: new FormControl(),
-      title: new FormControl(),
-      type: new FormControl(),
-      balance: new FormControl(),
+      title: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      balance: new FormControl('', Validators.required),
     });
   }
 

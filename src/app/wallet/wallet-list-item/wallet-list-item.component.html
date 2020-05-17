@@ -1,7 +1,16 @@
 <!--Module dashboard component: Wallet-->
 <mat-card class="wallet" (click) = "navigate()">
   <mat-card-title class="wallet-title">{{wallet.title}}</mat-card-title>
-  <mat-card-subtitle class="wallet-type">{{wallet.type}}</mat-card-subtitle>
-  <mat-card-content class="wallet-value">{{wallet.balance}}</mat-card-content>
+  <mat-card-subtitle class="wallet-type">{{wallet.type.name}}</mat-card-subtitle>
+  <mat-card-content class="wallet-value">
+    <mat-icon *ngIf="wallet.balance >= 0" style="color: green">
+      trending_up
+    </mat-icon>
+    <mat-icon *ngIf="wallet.balance < 0" style="color: red">
+      trending_down
+    </mat-icon>
+    <span>{{wallet.balance}}</span>
+    <span>UAH</span>
+  </mat-card-content>
 </mat-card>
 <!--End Module dashboard component: Wallet-->
