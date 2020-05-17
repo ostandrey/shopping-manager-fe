@@ -1,4 +1,4 @@
-import {IWallet} from '../wallet/services/dataWallet/wallet-list-item';
+import {IWallet} from '../wallet/services/dataWallet/wallet.inteface';
 
 export class User {
   id: number;

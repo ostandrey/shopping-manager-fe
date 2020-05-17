@@ -1,5 +1,5 @@
-import {ITransaction} from '../../wallet-id/wallet-id.component';
 import {IWalletTypes} from '../../add-wallet/add-wallet.component';
+import {ITransaction} from '../../../transaction/transaction.interface';
 
 export interface IWallet {
   id: number;

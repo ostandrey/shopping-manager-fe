@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {IWallet} from './dataWallet/wallet-list-item';
+import {IWallet} from './dataWallet/wallet.inteface';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {User} from '../../user/user';
 import {IWalletTypes} from '../add-wallet/add-wallet.component';
 
 const initWallet = {

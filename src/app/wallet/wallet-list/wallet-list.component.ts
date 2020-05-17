@@ -6,7 +6,7 @@ import {first} from 'rxjs/operators';
 import {UserService} from '../../user/user.service';
 import {User} from '../../user/user';
 import {Observable} from 'rxjs';
-import {IWallet} from '../services/dataWallet/wallet-list-item';
+import {IWallet} from '../services/dataWallet/wallet.inteface';
 
 
 

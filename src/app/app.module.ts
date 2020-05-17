@@ -26,6 +26,7 @@ import {JwtInterceptor} from './auth/jwt.interceptor';
 import {ErrorInterceptor} from './auth/error.interceptor';
 import {fakeBackendProvider} from './auth/fake-backend';
 import {UserModule} from './user/user.module';
+import {TransactionModule} from './transaction/transaction.module';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {UserModule} from './user/user.module';
     MatSelectModule,
     WalletModule,
     HttpClientModule,
-    UserModule
+    UserModule,
+    TransactionModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

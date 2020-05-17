@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ITransaction} from '../add-transaction/add-transaction.component';
 import {WalletService} from '../services/wallet-service';
 import {UserService} from '../../user/user.service';
 import {User} from '../../user/user';
+import {ITransaction} from '../../transaction/transaction.interface';
 
 export interface IWalletTypes {
   id: number;
@@ -28,7 +28,6 @@ export class AddWalletComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddWalletComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ITransaction,
     private walletService: WalletService,
     private userService: UserService
   ) {

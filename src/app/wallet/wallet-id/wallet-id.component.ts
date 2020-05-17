@@ -3,22 +3,15 @@ import {FormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
-import {AddTransactionComponent} from '../add-transaction/add-transaction.component';
 import {UserService} from '../../user/user.service';
 import {WalletService} from '../services/wallet-service';
 import {first} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
-import {IWallet} from '../services/dataWallet/wallet-list-item';
+import {IWallet} from '../services/dataWallet/wallet.inteface';
+import {AddTransactionComponent} from '../../transaction/add-transaction/add-transaction.component';
+import {ITransaction} from '../../transaction/transaction.interface';
 
-
-
-export interface ITransaction {
-  amount: string;
-  category: {id: number, name: string};
-  description: string;
-  dateTable: number;
-}
 
 @Component({
   selector: 'app-wallet-id',

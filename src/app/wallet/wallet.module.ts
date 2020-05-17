@@ -15,7 +15,6 @@ import { WalletIDComponent } from './wallet-id/wallet-id.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatTableModule} from '@angular/material/table';
-import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSortModule} from '@angular/material/sort';
@@ -30,17 +29,12 @@ import { AddWalletComponent } from './add-wallet/add-wallet.component';
     WalletDashboardComponent,
     WalletOverviewComponent,
     WalletIDComponent,
-    AddTransactionComponent,
     AddWalletComponent
-  ],
-  entryComponents: [
-    AddTransactionComponent
   ],
   exports: [
     WalletListComponent,
     WalletOverviewComponent,
     WalletDashboardComponent,
-    AddTransactionComponent
   ],
   imports: [
     CommonModule,

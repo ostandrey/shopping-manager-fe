@@ -4,7 +4,7 @@
     <mat-card-subtitle>Fill the form to add a new transaction to the wallet</mat-card-subtitle>
       <!--Module dashboard component: Filters-->
       <mat-card-content class="filters">
-        <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
         <!--Card component: Note filter-->
         <mat-form-field class="filter">
           <mat-label class="filter-label">Amount</mat-label>
@@ -18,14 +18,15 @@
           <mat-select class="input-field" formControlName="category">
             <mat-tab-group>
               <mat-tab label="Expenses" class="tab">
-                <mat-option *ngFor="let category of CategoryExpenses" value="{{category.viewValue}}">
-                  {{category.viewValue}}
+                <mat-option *ngFor="let category of (categories$ | async)"
+                            value="{{category.id}}">
+                  {{category.name}}
                 </mat-option>
               </mat-tab>
-
               <mat-tab label="Incomes">
-                <mat-option  *ngFor="let category of CategoryIncomes" value="{{category.viewValue}}">
-                  {{category.viewValue}}
+                <mat-option  *ngFor="let category of (categories$ | async)"
+                             value="{{category.id}}">
+                  {{category.name}}
                 </mat-option>
               </mat-tab>
             </mat-tab-group>
@@ -52,7 +53,7 @@
       <!--End Module dashboard component: Filters-->
     </div>
     <div mat-dialog-actions class="btn-container">
-      <button mat-button type="submit" id="btn-add" [mat-dialog-close]="inputForm.value">Add transaction</button>
+      <button mat-button type="submit" id="btn-add" [mat-dialog-close]="transactionForm.value">Add transaction</button>
       <button mat-button (click)="onNoClick()">Cancel</button>
     </div>
 </div>
