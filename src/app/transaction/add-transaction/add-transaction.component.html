@@ -1,59 +1,86 @@
 <div class="container">
-  <div>
-    <mat-card-title>Add a new transaction</mat-card-title>
+  <div >
+    <mat-card-title class="transaction-title">Add a new transaction</mat-card-title>
     <mat-card-subtitle>Fill the form to add a new transaction to the wallet</mat-card-subtitle>
-      <!--Module dashboard component: Filters-->
-      <mat-card-content class="filters">
-        <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <!--Module dashboard component: Filters-->
+    <mat-card-content class="transaction-form">
+      <form [formGroup]="transactionForm">
+        <div class="transaction-header-fields">
+          <div class="transaction-select-field"
+               *ngIf="types$ && (types$ | async).length > 0">
+            <mat-label class="transaction-field-label">Type</mat-label>
+            <mat-form-field class="transaction-field"
+                            appearance="outline">
+              <!--Filter component: Select wallet-->
+              <mat-select class="transaction-input-field"
+                          placeholder="Transaction type"
+                          formControlName="categoryType"
+                          (selectionChange)="filterCategories()">
+                <mat-option *ngFor="let type of (types$ | async)" value="{{type.id}}">
+                  {{type.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!--End Card component: Wallet filter-->
+          </div>
+          <div class="transaction-select-field"
+               *ngIf="categories$ && (categories$ | async).length > 0">
+            <!--Card component: Wallet filter-->
+            <mat-label class="transaction-field-label">Category</mat-label>
+            <mat-form-field class="transaction-field" appearance="outline" >
+              <!--Filter component: Select wallet-->
+              <mat-select class="transaction-input-field"
+                          placeholder="Transaction category"
+                          formControlName="category"
+                          [disabled]="!transactionForm.controls.categoryType.value">
+                <mat-option *ngFor="let category of filteredCategories" [value]="category.id">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!--End Card component: Wallet filter-->
+          </div>
+        </div>
         <!--Card component: Note filter-->
-        <mat-form-field class="filter">
-          <mat-label class="filter-label">Amount</mat-label>
-          <input matInput type="text" class="input-field" formControlName="amount" placeholder="0.00">
+        <mat-label class="transaction-field-label">Amount</mat-label>
+        <mat-form-field class="transaction-field" appearance="outline">
+          <input matInput type="text"
+                 class="transaction-input-field"
+                 placeholder="0.00"
+                 formControlName="amount"
+          >
         </mat-form-field>
         <!--End Card component: Note filter-->
+
         <!--Card component: Wallet filter-->
-        <mat-form-field class="filter">
-          <mat-label class="filter-label">Category</mat-label>
-          <!--Filter component: Select wallet-->
-          <mat-select class="input-field" formControlName="category">
-            <mat-tab-group>
-              <mat-tab label="Expenses" class="tab">
-                <mat-option *ngFor="let category of (categories$ | async)"
-                            value="{{category.id}}">
-                  {{category.name}}
-                </mat-option>
-              </mat-tab>
-              <mat-tab label="Incomes">
-                <mat-option  *ngFor="let category of (categories$ | async)"
-                             value="{{category.id}}">
-                  {{category.name}}
-                </mat-option>
-              </mat-tab>
-            </mat-tab-group>
-          </mat-select>
-        </mat-form-field>
-        <!--End Card component: Wallet filter-->
-        <!--Card component: Note filter-->
-        <mat-form-field class="filter" id="filter-note">
-          <mat-label class="filter-label">Description</mat-label>
-          <input matInput type="text" class="input-field" formControlName="description">
-        </mat-form-field>
-        <!--End Card component: Note filter-->
         <!--Card component: Start date filter-->
-        <mat-form-field class="filter">
-          <mat-label class="filter-label">Date</mat-label>
+        <mat-label class="transaction-field-label">Date</mat-label>
+        <mat-form-field class="transaction-field" appearance="outline">
           <!--Filter component: Select Start date-->
-          <input matInput class="input-field" [matDatepicker]="picker1" formControlName="date">
+          <input matInput class="transaction-input-field"
+                 [matDatepicker]="picker1"
+                 placeholder="Transaction date"
+                 formControlName="date"
+          >
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-        </form>
-        <!--End Card component: Start date filter-->
-      </mat-card-content>
-      <!--End Module dashboard component: Filters-->
-    </div>
-    <div mat-dialog-actions class="btn-container">
-      <button mat-button type="submit" id="btn-add" [mat-dialog-close]="transactionForm.value">Add transaction</button>
-      <button mat-button (click)="onNoClick()">Cancel</button>
-    </div>
+        <!--Card component: Note filter-->
+        <mat-label class="transaction-field-label">Description</mat-label>
+        <mat-form-field class="transaction-field" appearance="outline">
+          <textarea matInput type="text"
+                    class="transaction-input-field"
+                    placeholder="Additional transaction information"
+                    formControlName="description"
+          ></textarea>
+        </mat-form-field>
+        <!--End Card component: Note filter-->
+      </form>
+      <!--End Card component: Start date filter-->
+    </mat-card-content>
+    <!--End Module dashboard component: Filters-->
+  </div>
 </div>
+
+
+

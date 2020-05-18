@@ -1,10 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {WalletService} from '../services/wallet-service';
 import {UserService} from '../../user/user.service';
 import {User} from '../../user/user';
-import {ITransaction} from '../../transaction/transaction.interface';
 
 export interface IWalletTypes {
   id: number;

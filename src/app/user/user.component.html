@@ -1,2 +1,5 @@
-<span>user firstname</span>
-<span>user laststname</span>
+<div *ngIf="(user$ | async) && (user$ | async).id > 0">
+  <span>{{(user$ | async).firstName}}</span>
+  <span>{{(user$ | async).lastName}}</span>
+  <button mat-button (click)="logout()">logout</button>
+</div>

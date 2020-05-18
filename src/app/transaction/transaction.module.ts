@@ -9,12 +9,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TransactionService} from './services/transaction.service';
+import {MatInputModule} from '@angular/material/input';
 
 
 
 @NgModule({
   declarations: [
-    AddTransactionComponent
+    AddTransactionComponent,
   ],
   imports: [
     CommonModule,
@@ -24,10 +25,11 @@ import {TransactionService} from './services/transaction.service';
     MatSelectModule,
     MatTabsModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ],
   exports: [
-    AddTransactionComponent
+    AddTransactionComponent,
   ],
   providers: [TransactionService]
 })

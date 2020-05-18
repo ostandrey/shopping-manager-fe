@@ -1,9 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import { FormControl, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef} from '@angular/material/dialog';
-import {ICategory, ICategoryType, ITransaction} from '../transaction.interface';
-import {Observable} from 'rxjs';
+import {ICategory, ICategoryType} from '../transaction.interface';
+import { Observable} from 'rxjs';
 import {TransactionService} from '../services/transaction.service';
+import {WalletService} from '../../wallet/services/wallet-service';
 
 
 @Component({
@@ -14,11 +15,13 @@ import {TransactionService} from '../services/transaction.service';
 export class AddTransactionComponent implements OnInit {
 
   transactionForm: FormGroup;
+  filteredCategories: ICategory[];
   categories$: Observable<ICategory[]>;
   types$: Observable<ICategoryType[]>;
 
   constructor(
     public dialogRef: MatDialogRef<AddTransactionComponent>,
+    private walletService: WalletService,
     private transactionService: TransactionService
   ) {}
 
@@ -38,11 +41,24 @@ export class AddTransactionComponent implements OnInit {
 
   initializeForm(): void {
     this.transactionForm = new FormGroup({
-      amount: new FormControl(),
-      category: new FormControl(),
+      amount: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')
+      ]),
+      categoryType: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required),
       description: new FormControl(),
-      date: new FormControl(new Date()),
+      date: new FormControl(new Date(), Validators.required),
     });
   }
 
+  filterCategories(): void {
+    this.categories$.subscribe(
+      (categories: ICategory[]) => {
+        this.filteredCategories = categories.filter(
+          category => category.type.id === Number(this.transactionForm.value.categoryType)
+        );
+      }
+    );
+  }
 }

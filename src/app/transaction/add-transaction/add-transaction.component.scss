@@ -1,43 +1,37 @@
-h2{
-  font-size: 3vmin;
-}
-
 .container{
-  width: 130vmin;
+  width: 70vmin;
 }
-
-.transaction-filters{
-  padding-top: 3vmin;
-}
-
-.filter-card{
-  box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .08);
-}
-
-.filter-title{
+.transaction-title{
   font-weight: 600;
   font-size: 2vmin;
   color: #324c5b;
 }
 
-.filters{
-  display: flex;
-  justify-content: space-around;
+.transaction-form{
   padding-top: 1vmin;
+  width: 100%;
+  margin: auto;
 }
 
-.input-field{
+.transaction-header-fields{
+  display: flex;
+  justify-content: space-between;
+}
+
+.transaction-field{
+  width: 100%;
+}
+.transaction-select-field{
+  width: 45%;
+}
+.transaction-input-field{
   font-size: 1.8vmin;
   color: #7b93a4;
 }
 
-.filter-label{
+.transaction-field-label{
   font-size: 1.8vmin;
   color: #7b93a4;
-}
-
-#filter-note{
-  width: 50vmin;
 }
 
 .btn-container{
@@ -57,4 +51,3 @@ h2{
   box-shadow: 0 4px 4px 0 rgba(181, 0, 19, 0.2);
   margin: 3px;
 }
-
