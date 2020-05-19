@@ -1,9 +1,10 @@
 .container{
-  width: 70vmin;
+  width: 45vmin;
+  cursor: default;
 }
 .transaction-title{
   font-weight: 600;
-  font-size: 2vmin;
+  font-size: 3vmin;
   color: #324c5b;
 }
 
@@ -20,6 +21,7 @@
 
 .transaction-field{
   width: 100%;
+  margin-bottom: 10px;
 }
 .transaction-select-field{
   width: 45%;
@@ -34,11 +36,15 @@
   color: #7b93a4;
 }
 
+#description-field{
+  height: 10vmin;
+}
+
 .btn-container{
   float: right;
 }
 
-#btn-add{
+.btn-add{
   background-color: #12c48b;
   color: #fff;
   box-shadow: 0 4px 4px 0 rgba(17, 195, 139, .2);

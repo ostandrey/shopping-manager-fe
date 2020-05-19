@@ -4,77 +4,107 @@
     <mat-card-subtitle>Fill the form to add a new transaction to the wallet</mat-card-subtitle>
     <!--Module dashboard component: Filters-->
     <mat-card-content class="transaction-form">
-      <form [formGroup]="transactionForm">
+      <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
         <div class="transaction-header-fields">
           <div class="transaction-select-field"
                *ngIf="types$ && (types$ | async).length > 0">
-            <mat-label class="transaction-field-label">Type</mat-label>
             <mat-form-field class="transaction-field"
-                            appearance="outline">
+                            appearance="legacy">
+              <mat-label class="transaction-field-label">Type</mat-label>
               <!--Filter component: Select wallet-->
               <mat-select class="transaction-input-field"
-                          placeholder="Transaction type"
+                          required
                           formControlName="categoryType"
                           (selectionChange)="filterCategories()">
                 <mat-option *ngFor="let type of (types$ | async)" value="{{type.id}}">
                   {{type.name}}
                 </mat-option>
               </mat-select>
+              <mat-hint>Transaction type</mat-hint>
+              <mat-error *ngIf="transactionForm.controls.categoryType.hasError('required')">
+                Please choose an
+                <strong>type</strong>
+              </mat-error>
             </mat-form-field>
             <!--End Card component: Wallet filter-->
           </div>
           <div class="transaction-select-field"
                *ngIf="categories$ && (categories$ | async).length > 0">
             <!--Card component: Wallet filter-->
-            <mat-label class="transaction-field-label">Category</mat-label>
-            <mat-form-field class="transaction-field" appearance="outline" >
+            <mat-form-field class="transaction-field" appearance="legacy" >
+              <mat-label class="transaction-field-label">Category</mat-label>
               <!--Filter component: Select wallet-->
               <mat-select class="transaction-input-field"
-                          placeholder="Transaction category"
+                          required
                           formControlName="category"
                           [disabled]="!transactionForm.controls.categoryType.value">
                 <mat-option *ngFor="let category of filteredCategories" [value]="category.id">
                   {{category.name}}
                 </mat-option>
               </mat-select>
+              <mat-hint>Transaction category</mat-hint>
+              <mat-error *ngIf="transactionForm.controls.category.hasError('required')">
+                Please choose an
+                <strong>category</strong>
+              </mat-error>
             </mat-form-field>
             <!--End Card component: Wallet filter-->
           </div>
         </div>
         <!--Card component: Note filter-->
-        <mat-label class="transaction-field-label">Amount</mat-label>
-        <mat-form-field class="transaction-field" appearance="outline">
+        <mat-form-field class="transaction-field" appearance="legacy">
+          <mat-label class="transaction-field-label">Amount</mat-label>
           <input matInput type="text"
+                 required
                  class="transaction-input-field"
-                 placeholder="0.00"
                  formControlName="amount"
           >
+          <mat-hint>Example: 0.00</mat-hint>
+          <mat-error *ngIf="transactionForm.controls.amount.hasError('required')">
+            Please write an amount <strong>(123.00)</strong>
+          </mat-error>
         </mat-form-field>
         <!--End Card component: Note filter-->
 
         <!--Card component: Wallet filter-->
         <!--Card component: Start date filter-->
-        <mat-label class="transaction-field-label">Date</mat-label>
-        <mat-form-field class="transaction-field" appearance="outline">
+        <mat-form-field class="transaction-field" appearance="legacy">
+          <mat-label class="transaction-field-label">Date</mat-label>
           <!--Filter component: Select Start date-->
           <input matInput class="transaction-input-field"
                  [matDatepicker]="picker1"
-                 placeholder="Transaction date"
                  formControlName="date"
           >
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
+          <mat-hint>Transaction date</mat-hint>
         </mat-form-field>
         <!--Card component: Note filter-->
-        <mat-label class="transaction-field-label">Description</mat-label>
-        <mat-form-field class="transaction-field" appearance="outline">
+        <mat-form-field class="transaction-field" appearance="legacy">
+          <mat-label class="transaction-field-label">Description</mat-label>
           <textarea matInput type="text"
                     class="transaction-input-field"
-                    placeholder="Additional transaction information"
+                    id="description-field"
                     formControlName="description"
           ></textarea>
+          <mat-hint>Additional transaction information</mat-hint>
         </mat-form-field>
         <!--End Card component: Note filter-->
+        <div mat-dialog-actions class="btn-container">
+          <button mat-raised-button
+                  type="submit"
+                  [disabled]="transactionForm.invalid"
+                  [mat-dialog-close]="transactionForm.value"
+                  class="btn-add"
+          >
+            Add transaction
+          </button>
+          <button mat-raised-button
+                  (click)="onNoClick()"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
       <!--End Card component: Start date filter-->
     </mat-card-content>

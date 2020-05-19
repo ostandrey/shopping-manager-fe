@@ -5,6 +5,7 @@ import {ICategory, ICategoryType} from '../transaction.interface';
 import { Observable} from 'rxjs';
 import {TransactionService} from '../services/transaction.service';
 import {WalletService} from '../../wallet/services/wallet-service';
+import {IWallet} from '../../wallet/services/dataWallet/wallet.inteface';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class AddTransactionComponent implements OnInit {
   filteredCategories: ICategory[];
   categories$: Observable<ICategory[]>;
   types$: Observable<ICategoryType[]>;
+  wallet$: Observable<IWallet>;
 
   constructor(
     public dialogRef: MatDialogRef<AddTransactionComponent>,
@@ -29,11 +31,29 @@ export class AddTransactionComponent implements OnInit {
     this.initializeForm();
     this.categories$ = this.transactionService.categories;
     this.types$ = this.transactionService.catTypes;
+    this.wallet$ = this.walletService.wallet;
     this.transactionService.getTransactionCategories();
     this.transactionService.getTransactionCategoryTypes();
   }
 
-  onSubmit() {  }
+  onSubmit() {
+    let walletId = 0;
+    this.wallet$.subscribe(
+        (data: IWallet) => {
+        walletId = data.id;
+      }
+    );
+    const {amount, description, date, category} = this.transactionForm.value;
+    const desc = description === null ? '' : description;
+    const body = {
+      amount: Number(amount),
+      date,
+      description: desc,
+      category: Number(category),
+      wallet: walletId
+    };
+    this.transactionService.addTransaction(body);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

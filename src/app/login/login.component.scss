@@ -28,10 +28,12 @@
 .login-field{
   width: 100%;
   color: #7b93a4;
+  margin-bottom: 10px;
 }
 
 .btn-login{
+  background-color: #12c48b;
+  color: #fff;
+  box-shadow: 0 4px 4px 0 rgba(17, 195, 139, .2);
   width: 100%;
-  background-color: #e5ebee;
-  color: #7b93a4;
 }

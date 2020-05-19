@@ -5,7 +5,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../user/user.service';
 import {WalletService} from '../services/wallet-service';
-import {first} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {IWallet} from '../services/dataWallet/wallet.inteface';
@@ -30,6 +29,7 @@ export class WalletIDComponent implements OnInit {
 
   date = new FormControl(new Date());
   wallet$: Observable<IWallet>;
+  walletId: string;
 
   constructor(
     public dialog: MatDialog,
@@ -40,8 +40,8 @@ export class WalletIDComponent implements OnInit {
 
   ngOnInit(): void {
     this.wallet$ = this.walletService.wallet;
-    const walletId = this.route.snapshot.paramMap.get('walletId');
-    this.walletService.getWalletById(walletId);
+    this.walletId = this.route.snapshot.paramMap.get('walletId');
+    this.walletService.getWalletById(this.walletId);
     this.dataSource.sort = this.sort;
   }
 
@@ -51,10 +51,11 @@ export class WalletIDComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.dataSource.data = this.dataSource.data.concat(result);
+      this.walletService.getWalletById(this.walletId);
+      // if (result) {
+        // this.dataSource.data = this.dataSource.data.concat(result);
         // this.dataSource.data = [result, ...this.dataSource.data];
-      }
+      // }
     });
   }
 }

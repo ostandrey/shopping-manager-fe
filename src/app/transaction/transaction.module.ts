@@ -10,12 +10,20 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TransactionService} from './services/transaction.service';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
+import {MatListModule} from '@angular/material/list';
+import { TransactionListItemComponent } from './transaction-list-item/transaction-list-item.component';
+import { TransactionDeleteComponent } from './transaction-delete/transaction-delete.component';
 
 
 
 @NgModule({
   declarations: [
     AddTransactionComponent,
+    TransactionListComponent,
+    TransactionListItemComponent,
+    TransactionDeleteComponent,
   ],
   imports: [
     CommonModule,
@@ -26,10 +34,13 @@ import {MatInputModule} from '@angular/material/input';
     MatTabsModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatListModule
   ],
   exports: [
     AddTransactionComponent,
+    TransactionListComponent,
   ],
   providers: [TransactionService]
 })

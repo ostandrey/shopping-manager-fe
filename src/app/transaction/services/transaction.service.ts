@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {IWallet} from '../../wallet/services/dataWallet/wallet.inteface';
+import {BehaviorSubject,  throwError} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {IWalletTypes} from '../../wallet/add-wallet/add-wallet.component';
 import {ICategory, ICategoryType, ITransaction} from '../transaction.interface';
 
 const initTransaction = {
@@ -18,7 +16,7 @@ const initTransaction = {
     name: ''
   },
   description: '',
-  dateTable: 0
+  date: new Date()
 };
 
 @Injectable()
@@ -82,6 +80,17 @@ export class TransactionService {
         data => {
           this._catTypes.next([...data]);
         },
+        error => {
+          console.error(`Error ${error.status}: ${error.message}`);
+          throwError(error);
+        }
+      );
+  }
+
+  deleteTransaction(id) {
+    this.httpClient.delete<ITransaction>(`${environment.apiUrl}/transactions/${id}`)
+      .subscribe(
+        data => console.log('The wallet was deleted successfully'),
         error => {
           console.error(`Error ${error.status}: ${error.message}`);
           throwError(error);

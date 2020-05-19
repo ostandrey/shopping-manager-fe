@@ -1,5 +1,7 @@
-<div *ngIf="(user$ | async) && (user$ | async).id > 0">
-  <span>{{(user$ | async).firstName}}</span>
-  <span>{{(user$ | async).lastName}}</span>
-  <button mat-button (click)="logout()">logout</button>
+<div class="user-container" *ngIf="(user$ | async) && (user$ | async).id > 0">
+  <div class="user-data">
+    <span>{{(user$ | async).firstName}} </span>
+    <span> {{(user$ | async).lastName}}</span>
+  </div>
+    <button mat-button (click)="logout()" id="logout">logout</button>
 </div>

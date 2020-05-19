@@ -1,7 +1,10 @@
 #toolbar{
+  display: flex;
+  justify-content: space-between;
   background: white;
   border-bottom: solid 1px #e5ebee;
   box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .03);
+  color: #324c5b;
 }
 
 a{

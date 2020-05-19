@@ -13,7 +13,7 @@ export interface ITransaction {
   amount: number;
   category: ICategory;
   description: string;
-  dateTable: number;
+  date: Date;
 }
 
 export interface ICategory {

@@ -22,6 +22,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule} from '@angular/common/http';
 import {WalletService} from './services/wallet-service';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
+import {TransactionModule} from '../transaction/transaction.module';
 
 @NgModule({
   declarations: [WalletListComponent,
@@ -36,24 +37,25 @@ import { AddWalletComponent } from './add-wallet/add-wallet.component';
     WalletOverviewComponent,
     WalletDashboardComponent,
   ],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatDatepickerModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    MatTableModule,
-    FormsModule,
-    MatDialogModule,
-    MatSortModule,
-    MatTabsModule,
-    HttpClientModule
-  ],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatDatepickerModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatTableModule,
+        FormsModule,
+        MatDialogModule,
+        MatSortModule,
+        MatTabsModule,
+        HttpClientModule,
+        TransactionModule
+    ],
   providers: [WalletService],
 })
 export class WalletModule { }

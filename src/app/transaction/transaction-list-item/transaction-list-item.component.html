@@ -1,0 +1,9 @@
+<div>
+  <span class="trans-list-amount">{{transaction.amount}}</span>
+  <span class="trans-list-category">{{transaction.category.name}}</span>
+  <span class="trans-list-description">{{transaction.description}}</span>
+  <span class="trans-list-date">{{transaction.date | date}}</span>
+  <span class="trans-list-edit material-icons">create</span>
+  <span class="trans-list-delete material-icons"
+        (click)="transactionDelete()">delete</span>
+</div>
