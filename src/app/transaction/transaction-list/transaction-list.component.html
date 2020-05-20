@@ -1,8 +1,33 @@
-<mat-list role="list">
-  <mat-list-item role="listitem"
-  *ngFor="let transaction of (wallet$ | async).transaction">
-    <app-transaction-list-item [transaction]= transaction></app-transaction-list-item>
-  </mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<mat-card class="transaction-card">
+  <div class="card-header">
+    <div class="amount-column">
+      <span>
+        Amount
+      </span>
+    </div>
+    <div class="category-column">
+      <span>
+        Category
+      </span>
+    </div>
+    <div class="description-column">
+      <span>
+        Description
+      </span>
+    </div>
+    <div class="date-column">
+      <span>
+        Date
+      </span>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+                   *ngFor="let transaction of (wallet$ | async).transaction">
+      <app-transaction-list-item class="list-item" [transaction]= transaction ></app-transaction-list-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+

@@ -1,0 +1,56 @@
+.trans-list-content{
+  width: 100%;
+  display: flex;
+  cursor: default;
+  user-select: none;
+}
+.trans-list-amount{
+  width: 20%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.trans-list-category {
+  width: 20%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.trans-list-description {
+  width: 37%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.trans-list-date{
+  width: 15%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.trans-btn{
+  display: flex;
+  width: 8%;
+  justify-content: space-between;
+
+  .trans-list-edit{
+    cursor: pointer;
+    user-select: none;
+  }
+  .trans-list-delete{
+    cursor: pointer;
+    user-select: none;
+  }
+
+}
+
+.trans-list-edit
+.trans-list-delete{
+  cursor: pointer;
+  user-select: none;
+}

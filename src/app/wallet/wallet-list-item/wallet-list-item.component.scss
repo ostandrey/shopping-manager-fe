@@ -4,6 +4,7 @@
   width: 22vmin;
   box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
   cursor: pointer;
+  user-select: none;
 }
 
 .wallet:hover{

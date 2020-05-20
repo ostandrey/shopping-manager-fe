@@ -91,47 +91,19 @@
        *ngIf="(wallet$ | async).transaction && (wallet$ | async).transaction.length > 0;
        else noTransactionList"
   >
-    <table mat-table [dataSource]="(wallet$ | async).transaction" matSort
-           class="mat-elevation-z8 transaction-table"
-    >
-      <!-- Position Column -->
-      <ng-container matColumnDef="amount">
-        <th mat-header-cell class="table-title" *matHeaderCellDef mat-sort-header> Amount </th>
-        <div class="amount-column">
-          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
-        </div>
-      </ng-container>
-
-     <!-- Name Column -->
-      <ng-container matColumnDef="category" >
-        <th mat-header-cell class="table-title" *matHeaderCellDef mat-sort-header> Category </th>
-        <div class="category-column">
-          <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
-        </div>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="description">
-        <th mat-header-cell class="table-title" *matHeaderCellDef  mat-sort-header > Description </th>
-        <div class="description-column">
-          <td mat-cell *matCellDef="let element" > {{element.description}} </td>
-        </div>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="date" class="info-column">
-        <th mat-header-cell class="table-title" *matHeaderCellDef mat-sort-header > Date </th>
-        <div class="date-column">
-          <td mat-cell id="date"  *matCellDef="let element" > {{element.date}} </td>
-        </div>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <app-transaction-list></app-transaction-list>
   </div>
-  <ng-template #noTransactionList>There is no any transaction yet</ng-template>
+  <ng-template #noTransactionList>
+    <div class="no-transactions">
+      <span>
+       You have no transactions.
+      </span>
+    </div>
+    <!--<div class="no-transactions">
+      <img src="assets/images/noTransactions.png" alt="image">
+    </div>-->
+  </ng-template>
   <!--End Module dashboard component: Transaction List-->
-  <app-transaction-list></app-transaction-list>
+
 </div>
 

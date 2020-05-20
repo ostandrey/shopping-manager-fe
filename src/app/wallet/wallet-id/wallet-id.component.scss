@@ -84,9 +84,7 @@
 }
 
 .transaction-list{
-  margin-top: 5vmin;
-  overflow: auto;
-  height: 30vmin;
+  //overflow: auto;
 }
 
 .transaction-table{
@@ -138,4 +136,15 @@ th, td {
   width:auto;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+img{
+  width: 20vmin;
+}
+
+.no-transactions{
+  width: 40vmin;
+  text-align: center;
+  margin: auto;
+  color: #7b93a4;
 }

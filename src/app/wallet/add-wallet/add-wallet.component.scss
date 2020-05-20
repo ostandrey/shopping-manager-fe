@@ -1,6 +1,7 @@
 .container{
   width: 40vmin;
   cursor: default;
+  user-select: none;
 }
 
 .add-wallet-title{
@@ -38,7 +39,7 @@
 }
 
 .btn-cancel{
-  background-color: rgba(218, 0, 19, 0.99);
+  background-color: #f15e5e;
   color: #fff;
   box-shadow: 0 4px 4px 0 rgba(181, 0, 19, 0.2);
   margin: 3px;

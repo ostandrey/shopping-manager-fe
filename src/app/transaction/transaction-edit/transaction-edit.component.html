@@ -1,10 +1,10 @@
 <div class="container">
   <div >
-    <mat-card-title class="transaction-title">Add a new transaction</mat-card-title>
-    <mat-card-subtitle>Fill the form to add a new transaction to the wallet</mat-card-subtitle>
+    <mat-card-title class="transaction-title">Edit transaction</mat-card-title>
+    <mat-card-subtitle>Fill the form to edit transaction</mat-card-subtitle>
     <!--Module dashboard component: Filters-->
     <mat-card-content class="transaction-form">
-      <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="transactionForm" (ngSubmit)="onSubmitEdit()">
         <div class="transaction-header-fields">
           <div class="transaction-select-field"
                *ngIf="types$ && (types$ | async).length > 0">
@@ -57,6 +57,7 @@
                  class="transaction-input-field"
                  formControlName="amount"
           >
+          <mat-hint>Example: 0.00</mat-hint>
           <mat-error *ngIf="transactionForm.controls.amount.hasError('required')">
             Please write an amount <strong>(123.00)</strong>
           </mat-error>
@@ -107,6 +108,3 @@
     <!--End Module dashboard component: Filters-->
   </div>
 </div>
-
-
-

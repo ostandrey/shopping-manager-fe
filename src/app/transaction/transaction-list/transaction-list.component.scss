@@ -1,0 +1,51 @@
+.transaction-card{
+  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  cursor: default;
+  user-select: none;
+}
+
+.card-header{
+  display: flex;
+  padding: 0 16px 15px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 2vmin;
+  color: #324c5b;
+
+}
+
+.amount-column{
+  width: 19%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.category-column {
+  width: 20%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.description-column {
+  width: 35%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.date-column{
+  width: 20%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-item{
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}

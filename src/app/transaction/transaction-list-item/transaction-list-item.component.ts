@@ -5,6 +5,7 @@ import {WalletService} from '../../wallet/services/wallet-service';
 import {ActivatedRoute} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {TransactionDeleteComponent} from '../transaction-delete/transaction-delete.component';
+import {TransactionEditComponent} from '../transaction-edit/transaction-edit.component';
 
 @Component({
   selector: 'app-transaction-list-item',
@@ -20,6 +21,19 @@ export class TransactionListItemComponent {
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {}
+
+  transactionEdit(): void {
+    const dialogRef = this.dialog.open(TransactionEditComponent, {
+      data: this.transaction
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        const walletId = this.route.snapshot.paramMap.get('walletId');
+        this.walletService.getWalletById(walletId);
+      }
+    );
+  }
 
   transactionDelete(): void {
     const dialogRef = this.dialog.open(TransactionDeleteComponent, {

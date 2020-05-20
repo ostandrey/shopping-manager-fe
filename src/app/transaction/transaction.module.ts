@@ -15,6 +15,7 @@ import { TransactionListComponent } from './transaction-list/transaction-list.co
 import {MatListModule} from '@angular/material/list';
 import { TransactionListItemComponent } from './transaction-list-item/transaction-list-item.component';
 import { TransactionDeleteComponent } from './transaction-delete/transaction-delete.component';
+import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 
 
 
@@ -24,6 +25,7 @@ import { TransactionDeleteComponent } from './transaction-delete/transaction-del
     TransactionListComponent,
     TransactionListItemComponent,
     TransactionDeleteComponent,
+    TransactionEditComponent,
   ],
   imports: [
     CommonModule,

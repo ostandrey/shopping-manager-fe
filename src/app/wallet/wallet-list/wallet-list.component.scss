@@ -5,6 +5,7 @@ h2{
 .wallets{
   padding-top: 3vmin;
   cursor: default;
+  user-select: none;
 }
 
 .wallets-container{
@@ -19,8 +20,6 @@ h2{
   width: 75%;
   overflow: hidden;
   padding: 1vmin 0;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
 }
 
 .wallet-items{
@@ -44,4 +43,12 @@ h2{
 .material-icons{
 
   font-size: 5vmin;
+}
+
+.right-arrow-btn{
+  box-shadow: -7px 0px 8px -8px rgba(0,0,0,0.55);
+}
+
+.left-arrow-btn{
+  box-shadow: 7px 0px 8px -8px rgba(0,0,0,0.55);
 }
