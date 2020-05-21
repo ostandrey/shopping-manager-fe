@@ -72,6 +72,11 @@ export class AddTransactionComponent implements OnInit {
     });
   }
 
+  onSelectCategoryType(): void {
+    this.filterCategories();
+    this.addAmountPrefix();
+  }
+
   filterCategories(): void {
     this.categories$.subscribe(
       (categories: ICategory[]) => {
@@ -80,5 +85,11 @@ export class AddTransactionComponent implements OnInit {
         );
       }
     );
+  }
+
+  addAmountPrefix(): void {
+    if (Number(this.transactionForm.value.categoryType) === 2) {
+      this.transactionForm.controls.amount.setValue('-');
+    }
   }
 }

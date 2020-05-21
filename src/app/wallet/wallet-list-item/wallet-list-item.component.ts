@@ -1,5 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TransactionDeleteComponent} from '../../transaction/transaction-delete/transaction-delete.component';
+import {TransactionService} from '../../transaction/services/transaction.service';
+import {WalletService} from '../services/wallet-service';
+import {MatDialog} from '@angular/material/dialog';
+import {DeleteWalletComponent} from '../delete-wallet/delete-wallet.component';
+import {UserService} from '../../user/user.service';
 
 interface IWallet {
   id: number;
@@ -15,8 +21,26 @@ interface IWallet {
 })
 export class WalletListItemComponent {
   @Input() wallet: IWallet;
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private walletService: WalletService,
+    private route: ActivatedRoute,
+    public dialog: MatDialog
+  ) {}
   navigate(): void {
     this.router.navigate([`/dashboard/${this.wallet.id}`]);
+  }
+
+  walletDelete(): void {
+    const dialogRef = this.dialog.open(DeleteWalletComponent, {
+      data: this.wallet
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        this.userService.getUser();
+      }
+    );
   }
 }

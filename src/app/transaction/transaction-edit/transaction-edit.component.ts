@@ -42,14 +42,14 @@ export class TransactionEditComponent implements OnInit{
 
   initializeForm(): void {
     this.transactionForm = new FormGroup({
-      amount: new FormControl('', [
+      amount: new FormControl(this.data.amount, [
         Validators.required,
         Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')
       ]),
       categoryType: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required),
-      description: new FormControl(),
-      date: new FormControl(new Date(), Validators.required),
+      category: new FormControl(this.data.category.id, Validators.required),
+      description: new FormControl(this.data.description),
+      date: new FormControl(this.data.date, Validators.required),
     });
   }
 
@@ -79,6 +79,6 @@ export class TransactionEditComponent implements OnInit{
       category: Number(category),
       wallet: walletId
     };
-    this.transactionService.addTransaction(body);
+    this.transactionService.editTransaction(walletId, body);
   }
 }

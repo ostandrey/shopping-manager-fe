@@ -15,7 +15,7 @@
               <mat-select class="transaction-input-field"
                           required
                           formControlName="categoryType"
-                          (selectionChange)="filterCategories()">
+                          (selectionChange)="onSelectCategoryType()">
                 <mat-option *ngFor="let type of (types$ | async)" value="{{type.id}}">
                   {{type.name}}
                 </mat-option>

@@ -23,6 +23,8 @@ import { HttpClientModule} from '@angular/common/http';
 import {WalletService} from './services/wallet-service';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
 import {TransactionModule} from '../transaction/transaction.module';
+import {MatMenuModule} from '@angular/material/menu';
+import { DeleteWalletComponent } from './delete-wallet/delete-wallet.component';
 
 @NgModule({
   declarations: [WalletListComponent,
@@ -30,7 +32,8 @@ import {TransactionModule} from '../transaction/transaction.module';
     WalletDashboardComponent,
     WalletOverviewComponent,
     WalletIDComponent,
-    AddWalletComponent
+    AddWalletComponent,
+    DeleteWalletComponent
   ],
   exports: [
     WalletListComponent,
@@ -54,7 +57,8 @@ import {TransactionModule} from '../transaction/transaction.module';
         MatSortModule,
         MatTabsModule,
         HttpClientModule,
-        TransactionModule
+        TransactionModule,
+        MatMenuModule
     ],
   providers: [WalletService],
 })

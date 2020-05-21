@@ -53,4 +53,15 @@ export class WalletService {
   getWalletTypes(): Observable<IWalletTypes[]> {
     return this.httpClient.get<IWalletTypes[]>(`${environment.apiUrl}/wallets_type`);
   }
+
+  deleteWallet(id) {
+    this.httpClient.delete<IWallet>(`${environment.apiUrl}/wallets/${id}`)
+      .subscribe(
+        data => console.log('The wallet was deleted successfully'),
+        error => {
+          console.error(`Error ${error.status}: ${error.message}`);
+          throwError(error);
+        }
+      );
+  }
 }

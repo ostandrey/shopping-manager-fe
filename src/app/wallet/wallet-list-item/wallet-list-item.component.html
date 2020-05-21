@@ -1,7 +1,26 @@
 <!--Module dashboard component: Wallet-->
 <mat-card class="wallet" (click) = "navigate()">
-  <mat-card-title class="wallet-title">{{wallet.title}}</mat-card-title>
-  <mat-card-subtitle class="wallet-type">{{wallet.type.name}}</mat-card-subtitle>
+  <div class="wallet-item-header">
+    <div>
+      <mat-card-title class="wallet-title">{{wallet.title}}</mat-card-title>
+      <mat-card-subtitle class="wallet-type">{{wallet.type.name}}</mat-card-subtitle>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+            (click)="$event.stopPropagation()">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>create</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item (click)="walletDelete()">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </div>
   <mat-card-content class="wallet-value">
     <mat-icon *ngIf="wallet.balance >= 0" style="color: green">
       trending_up

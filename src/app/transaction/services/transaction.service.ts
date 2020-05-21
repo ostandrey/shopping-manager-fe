@@ -97,4 +97,15 @@ export class TransactionService {
         }
       );
   }
+
+  editTransaction(id, transaction) {
+    this.httpClient.put<ITransaction>(`${environment.apiUrl}/transactions/${id}`, transaction)
+      .subscribe(
+        data => console.log('The wallet was added successfully'),
+        error => {
+          console.error(`Error ${error.status}: ${error.message}`);
+          throwError(error);
+        }
+      );
+  }
 }

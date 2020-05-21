@@ -11,6 +11,10 @@
   box-shadow: 0 4px 8px 0 rgba(48, 82, 120, .2);
 }
 
+.wallet-item-header{
+  display: flex;
+}
+
 .wallet-title{
   font-size: 2vmin;
   color: #324c5b;
@@ -26,4 +30,3 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
