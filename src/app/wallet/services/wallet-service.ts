@@ -22,6 +22,10 @@ export class WalletService {
   private _wallet = new BehaviorSubject<IWallet>(initWallet);
   readonly wallet = this._wallet.asObservable();
 
+  // tslint:disable-next-line:variable-name
+  private _walletTypes = new BehaviorSubject<IWalletTypes[]>([]);
+  readonly walletTypes = this._walletTypes.asObservable();
+
   constructor(
     private httpClient: HttpClient
   ) {}
@@ -40,7 +44,7 @@ export class WalletService {
   }
 
   addWallet(wallet) {
-    this.httpClient.post<IWalletTypes>(`${environment.apiUrl}/wallets`, wallet)
+    this.httpClient.post<IWallet>(`${environment.apiUrl}/wallets`, wallet)
       .subscribe(
         data => console.log('The wallet was added successfully'),
         error => {
@@ -50,14 +54,37 @@ export class WalletService {
       );
   }
 
-  getWalletTypes(): Observable<IWalletTypes[]> {
-    return this.httpClient.get<IWalletTypes[]>(`${environment.apiUrl}/wallets_type`);
+  getWalletTypes() {
+    this.httpClient.get<IWalletTypes[]>(`${environment.apiUrl}/wallets_type`)
+      .subscribe(
+        data => {
+          this._walletTypes.next([...data]);
+        },
+        error => {
+          console.error(`Error ${error.status}: ${error.message}`);
+          throwError(error);
+        }
+      );
   }
+  // getWalletTypes(): Observable<IWalletTypes[]> {
+  //   return this.httpClient.get<IWalletTypes[]>(`${environment.apiUrl}/wallets_type`);
+  // }
 
   deleteWallet(id) {
     this.httpClient.delete<IWallet>(`${environment.apiUrl}/wallets/${id}`)
       .subscribe(
         data => console.log('The wallet was deleted successfully'),
+        error => {
+          console.error(`Error ${error.status}: ${error.message}`);
+          throwError(error);
+        }
+      );
+  }
+
+  editWallet(id, wallet) {
+    this.httpClient.put<IWallet>(`${environment.apiUrl}/wallets/${id}`, wallet)
+      .subscribe(
+        data => console.log('The wallet was added successfully'),
         error => {
           console.error(`Error ${error.status}: ${error.message}`);
           throwError(error);

@@ -6,6 +6,8 @@ import {WalletService} from '../services/wallet-service';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteWalletComponent} from '../delete-wallet/delete-wallet.component';
 import {UserService} from '../../user/user.service';
+import {TransactionEditComponent} from '../../transaction/transaction-edit/transaction-edit.component';
+import {EditWalletComponent} from '../edit-wallet/edit-wallet.component';
 
 interface IWallet {
   id: number;
@@ -34,6 +36,18 @@ export class WalletListItemComponent {
 
   walletDelete(): void {
     const dialogRef = this.dialog.open(DeleteWalletComponent, {
+      data: this.wallet
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        this.userService.getUser();
+      }
+    );
+  }
+
+  walletEdit(): void {
+    const dialogRef = this.dialog.open(EditWalletComponent, {
       data: this.wallet
     });
 

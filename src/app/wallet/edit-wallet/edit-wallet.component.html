@@ -4,7 +4,7 @@
     Fill the form to create a new wallet
   </mat-card-subtitle>
   <mat-card-content>
-    <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="inputForm" (ngSubmit)="onSubmitEdit()">
       <div>
         <!--Module dashboard component: Filters-->
         <mat-card-content class="filters">
@@ -63,7 +63,7 @@
                 class="btn-add"
 
         >
-          Add wallet
+          Edit wallet
         </button>
         <button mat-raised-button
                 (click)="onNoClick()"

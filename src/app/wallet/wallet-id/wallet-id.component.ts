@@ -22,7 +22,6 @@ export class WalletIDComponent implements OnInit {
 
   transactionList: ITransaction[];
 
-  displayedColumns: string[] = ['amount', 'category', 'description', 'date'];
   dataSource = new MatTableDataSource(this.transactionList);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;

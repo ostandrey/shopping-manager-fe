@@ -12,7 +12,7 @@ import {WalletService} from '../../wallet/services/wallet-service';
   templateUrl: './transaction-edit.component.html',
   styleUrls: ['./transaction-edit.component.scss']
 })
-export class TransactionEditComponent implements OnInit{
+export class TransactionEditComponent implements OnInit {
 
   transactionForm: FormGroup;
   filteredCategories: ICategory[];

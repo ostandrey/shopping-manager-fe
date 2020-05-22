@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {WalletService} from '../services/wallet-service';
 import {UserService} from '../../user/user.service';
 import {User} from '../../user/user';
+import {Observable} from 'rxjs';
 
 export interface IWalletTypes {
   id: number;
@@ -17,38 +18,43 @@ export interface IWalletTypes {
 })
 export class AddWalletComponent implements OnInit {
 
-  userId: number;
   inputForm: FormGroup;
-
-  walletTypes: Array<IWalletTypes> = [
-    {id: 0, name: 'Cash'},
-    {id: 1, name: 'Bank card'},
-  ];
+  walletTypes: Array<IWalletTypes> = [];
+  user$: Observable<User>;
+  types$: Observable<IWalletTypes[]>;
 
   constructor(
     public dialogRef: MatDialogRef<AddWalletComponent>,
     private walletService: WalletService,
     private userService: UserService
   ) {
-    this.inputForm = new FormGroup({
-      title: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
-      balance: new FormControl('', Validators.required),
-    });
+    // this.inputForm = new FormGroup({
+    //   title: new FormControl('', Validators.required),
+    //   type: new FormControl('', Validators.required),
+    //   balance: new FormControl('', [
+    //     Validators.required,
+    //     Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')
+    //   ]),
+    // });
   }
 
   ngOnInit(): void {
-    this.userService.user.subscribe(
-      (data: User) => {
-        this.userId = data.id;
-      }
-    );
-    this.walletService.getWalletTypes()
-      .subscribe(
-        (data: IWalletTypes[]) => {
-          this.walletTypes = data;
-        }
-      );
+    this.initializeForm();
+    this.user$ = this.userService.user;
+    this.types$ = this.walletService.walletTypes;
+    this.userService.getUser();
+    this.walletService.getWalletTypes();
+    // this.userService.user.subscribe(
+    //   (data: User) => {
+    //     this.userId = data.id;
+    //   }
+    // );
+    // this.walletService.getWalletTypes()
+    //   .subscribe(
+    //     (data: IWalletTypes[]) => {
+    //       this.walletTypes = data;
+    //     }
+    //   );
   }
 
   onNoClick(): void {
@@ -56,14 +62,39 @@ export class AddWalletComponent implements OnInit {
   }
 
   onSubmit() {
+    let userId = 0;
+    this.user$.subscribe(
+      (data: User) => {
+        userId = data.id;
+      }
+    );
+    // const {type, title, balance} = this.inputForm.value;
+    // const body = {
+    //   type: Number(type),
+    //   title,
+    //   balance: Number(balance),
+    //   user: userId
+    // };
+    // this.walletService.addWallet(body);
     const {type, title, balance} = this.inputForm.value;
     const body = {
       type: Number(type),
       title,
       balance: Number(balance),
-      user: this.userId
+      user: userId
     };
     this.walletService.addWallet(body);
+  }
+
+  initializeForm(): void {
+    this.inputForm = new FormGroup({
+      title: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      balance: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')
+      ])
+    });
   }
 
 }

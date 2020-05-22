@@ -25,6 +25,7 @@ import { AddWalletComponent } from './add-wallet/add-wallet.component';
 import {TransactionModule} from '../transaction/transaction.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { DeleteWalletComponent } from './delete-wallet/delete-wallet.component';
+import { EditWalletComponent } from './edit-wallet/edit-wallet.component';
 
 @NgModule({
   declarations: [WalletListComponent,
@@ -33,7 +34,8 @@ import { DeleteWalletComponent } from './delete-wallet/delete-wallet.component';
     WalletOverviewComponent,
     WalletIDComponent,
     AddWalletComponent,
-    DeleteWalletComponent
+    DeleteWalletComponent,
+    EditWalletComponent
   ],
   exports: [
     WalletListComponent,
