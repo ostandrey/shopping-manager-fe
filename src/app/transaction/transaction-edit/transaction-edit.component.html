@@ -21,8 +21,7 @@
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="transactionForm.controls.categoryType.hasError('required')">
-                Please choose an
-                <strong>type</strong>
+                Please choose an type
               </mat-error>
             </mat-form-field>
             <!--End Card component: Wallet filter-->
@@ -42,8 +41,7 @@
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="transactionForm.controls.category.hasError('required')">
-                Please choose an
-                <strong>category</strong>
+                Please choose an category
               </mat-error>
             </mat-form-field>
             <!--End Card component: Wallet filter-->
@@ -59,7 +57,7 @@
           >
           <mat-hint>Example: 0.00</mat-hint>
           <mat-error *ngIf="transactionForm.controls.amount.hasError('required')">
-            Please write an amount <strong>(123.00)</strong>
+            Please write an amount. Example: 123
           </mat-error>
         </mat-form-field>
         <!--End Card component: Note filter-->

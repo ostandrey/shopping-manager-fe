@@ -67,6 +67,7 @@ export class EditWalletComponent implements OnInit {
     );
     const {type, title, balance} = this.inputForm.value;
     const body = {
+      id: this.data.id,
       type: Number(type),
       title,
       balance: Number(balance),

@@ -1,3 +1,8 @@
+<!--<header>
+  <h1 class="animated bounceInDown">Animate.css</h1>
+  <h2 class="animated bounceInDown">Level Up Your Websites with Animate.css</h2>
+  <span class="animated bounce"></span>
+</header>-->
 <div id="container">
   <mat-card class="login-form">
     <mat-tab-group mat-align-tabs="center">
@@ -18,8 +23,7 @@
                          class="form-control"
                          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                   <mat-error *ngIf="loginForm.controls.username.hasError('required')">
-                    Please write an
-                    <strong>username</strong>
+                    Please write an username
                   </mat-error>
                   <!--<div *ngIf="submitted && f.username.errors" >
                     <div *ngIf="f.username.errors.required">Username is required</div>
@@ -36,8 +40,7 @@
                          class="form-control"
                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                   <mat-error *ngIf="loginForm.controls.password.hasError('required')">
-                    Please write an
-                    <strong>password</strong>
+                    Please write an password
                   </mat-error>
                   <!--<div *ngIf="submitted && f.password.errors" >
                     <div *ngIf="f.password.errors.required">Password is required</div>
@@ -72,8 +75,7 @@
                          class="form-control"
                          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                   <mat-error *ngIf="signUpForm.controls.username.hasError('required')">
-                    Please write an
-                    <strong>username</strong>
+                    Please write an username
                   </mat-error>
                   <!--<div *ngIf="submitted && f.username.errors" >
                     <div *ngIf="f.username.errors.required">Username is required</div>
@@ -90,8 +92,7 @@
                          class="form-control"
                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                   <mat-error *ngIf="signUpForm.controls.password.hasError('required')">
-                    Please write an
-                    <strong>password</strong>
+                    Please write an password
                   </mat-error>
                   <!--<div *ngIf="submitted && f.password.errors" >
                     <div *ngIf="f.password.errors.required">Password is required</div>
@@ -106,8 +107,7 @@
                          class="form-control"
                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                   <mat-error *ngIf="signUpForm.controls.firstName.hasError('required')">
-                    Please write an
-                    <strong>first name</strong>
+                    Please write an first name
                   </mat-error>
                   <!--<div *ngIf="submitted && f.password.errors" >
                     <div *ngIf="f.password.errors.required">Password is required</div>
@@ -122,8 +122,7 @@
                          class="form-control"
                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                   <mat-error *ngIf="signUpForm.controls.lastName.hasError('required')">
-                    Please write an
-                    <strong>last name</strong>
+                    Please write an last name
                   </mat-error>
                   <!--<div *ngIf="submitted && f.password.errors" >
                     <div *ngIf="f.password.errors.required">Password is required</div>

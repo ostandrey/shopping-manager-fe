@@ -2,6 +2,60 @@
   padding-top: 40px;
 }
 
+//header {
+//  width: 100% !important;
+//  position: relative;
+//  text-align: center;
+//  height: 100vh;
+//  background: linear-gradient(to right, #69bcf4, #30cc8b);
+//  color: #fff;
+//}
+//
+//header h1 {
+//  padding-top: 100px;
+//  font-size: 7em;
+//  font-weight: 100;
+//}
+//
+//header h2 {
+//  font-size: 2em;
+//}
+//
+//header span.animated {
+//  position: absolute;
+//  margin: auto;
+//  right: 0;
+//  left: 0;
+//  bottom: 50px;
+//  height: 4px;
+//  width: 4px;
+//  border-radius: 2px;
+//  background: #fff;
+//  animation-duration: 2.5s;
+//  animation-iteration-count: infinite;
+//}
+//
+//header span::before,
+//header span::after {
+//  position: absolute;
+//  top: -23px;
+//  content: "";
+//  height: 30px;
+//  width: 4px;
+//  border-radius: 2px;
+//  background: #fff;
+//}
+//
+//header span::before {
+//  left: -10px;
+//  transform:         rotate(-45deg);
+//}
+//
+//header span::after {
+//  right: -10px;
+//}
+
+
 mat-label{
   font-size: 1.8vmin;
   color: #7b93a4;
