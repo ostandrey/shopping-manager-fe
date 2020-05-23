@@ -56,6 +56,7 @@
                  required
                  class="transaction-input-field"
                  formControlName="amount"
+                 id="input-amount"
           >
           <mat-error *ngIf="transactionForm.controls.amount.hasError('required')">
             Please write an amount <strong>(123.00)</strong>

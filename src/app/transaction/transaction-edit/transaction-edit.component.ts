@@ -73,6 +73,7 @@ export class TransactionEditComponent implements OnInit {
     const {amount, description, date, category} = this.transactionForm.value;
     const desc = description === null ? '' : description;
     const body = {
+      id: this.data.id,
       amount: Number(amount),
       date,
       description: desc,
