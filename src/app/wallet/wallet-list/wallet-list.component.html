@@ -2,30 +2,39 @@
 <div class="wallets">
   <h2>Wallets</h2>
   <!--Module dashboard component: Wallets-->
-  <h3>Tracked cards: {{walletList.length}}</h3>
-  <div class="wallets-container">
-    <button mat-button class="left-arrow-btn">
+  <div *ngIf="walletList && walletList.length > 0; else noWalletList">
+    <h3>Tracked cards: {{walletList.length}}</h3>
+    <div class="wallets-container">
+      <button mat-button class="left-arrow-btn">
         <span class="material-icons">
           keyboard_arrow_left
         </span>
-    </button>
-    <!--Module dashboard component: Wallets-list-->
-    <div class="wallets-list">
-      <!--Module dashboard component: Wallet-->
-      <div *ngIf="walletList && walletList.length > 0; else noWalletList">
+      </button>
+      <!--Module dashboard component: Wallets-list-->
+      <div class="wallets-list">
+        <!--Module dashboard component: Wallet-->
         <div  class="wallet-items" *ngFor="let wallet of walletList">
           <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
         </div>
+        <!--End Module dashboard component: Wallet-->
       </div>
-      <ng-template #noWalletList>There is no any wallet yet</ng-template>
-      <!--End Module dashboard component: Wallet-->
-    </div>
-    <button mat-button class="right-arrow-btn">
+      <button mat-button class="right-arrow-btn">
         <span class="material-icons">
           keyboard_arrow_right
         </span>
-    </button>
-    <!--End Module dashboard component: Wallets-list-->
+      </button>
+      <!--End Module dashboard component: Wallets-list-->
+      <div class="wallet-add">
+        <button mat-button (click)="addWallet()">
+        <span class="material-icons">
+          add_circle_outline
+        </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #noWalletList>There is no any wallet yet
+    <img src="src/assets/images/noTransactions.png" alt="image">
     <div class="wallet-add">
       <button mat-button (click)="addWallet()">
         <span class="material-icons">
@@ -33,6 +42,6 @@
         </span>
       </button>
     </div>
-  </div>
+  </ng-template>
 </div>
 <!--End Module dashboard component: Wallets-->
