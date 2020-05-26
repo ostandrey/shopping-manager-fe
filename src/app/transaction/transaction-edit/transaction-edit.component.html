@@ -6,46 +6,48 @@
     <mat-card-content class="transaction-form">
       <form [formGroup]="transactionForm" (ngSubmit)="onSubmitEdit()">
         <div class="transaction-header-fields">
-          <div class="transaction-select-field"
-               *ngIf="types$ && (types$ | async).length > 0">
-            <mat-form-field class="transaction-field"
-                            appearance="legacy">
-              <mat-label class="transaction-field-label">Type</mat-label>
-              <!--Filter component: Select wallet-->
-              <mat-select class="transaction-input-field"
-                          required
-                          formControlName="categoryType"
-                          (selectionChange)="filterCategories()">
-                <mat-option *ngFor="let type of (types$ | async)" value="{{type.id}}">
-                  {{type.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="transactionForm.controls.categoryType.hasError('required')">
-                Please choose an type
-              </mat-error>
-            </mat-form-field>
-            <!--End Card component: Wallet filter-->
-          </div>
-          <div class="transaction-select-field"
-               *ngIf="categories$ && (categories$ | async).length > 0">
-            <!--Card component: Wallet filter-->
-            <mat-form-field class="transaction-field" appearance="legacy" >
-              <mat-label class="transaction-field-label">Category</mat-label>
-              <!--Filter component: Select wallet-->
-              <mat-select class="transaction-input-field"
-                          required
-                          formControlName="category"
-                          [disabled]="!transactionForm.controls.categoryType.value">
-                <mat-option *ngFor="let category of filteredCategories" [value]="category.id">
-                  {{category.name}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="transactionForm.controls.category.hasError('required')">
-                Please choose an category
-              </mat-error>
-            </mat-form-field>
-            <!--End Card component: Wallet filter-->
-          </div>
+<!--          <div class="transaction-select-field"-->
+<!--               *ngIf="types$ && (types$ | async).length > 0">-->
+<!--            <mat-form-field class="transaction-field"-->
+<!--                            appearance="legacy">-->
+<!--              <mat-label class="transaction-field-label">Type</mat-label>-->
+<!--              &lt;!&ndash;Filter component: Select wallet&ndash;&gt;-->
+<!--              <mat-select class="transaction-input-field"-->
+<!--                          required-->
+<!--                          formControlName="categoryType"-->
+<!--                          (selectionChange)="filterCategories()">-->
+<!--                <mat-option value="{{type.id}}">-->
+<!--                  {{type.name}}-->
+<!--                </mat-option>-->
+<!--              </mat-select>-->
+<!--              <mat-error *ngIf="transactionForm.controls.categoryType.hasError('required')">-->
+<!--                Please choose an type-->
+<!--              </mat-error>-->
+<!--            </mat-form-field>-->
+<!--            &lt;!&ndash;End Card component: Wallet filter&ndash;&gt;-->
+<!--          </div>-->
+          <div><span>Category: </span><span>{{data.category.name}}</span></div>
+<!--          <div class="transaction-select-field"-->
+<!--               *ngIf="categories$ && (categories$ | async).length > 0">-->
+<!--            &lt;!&ndash;Card component: Wallet filter&ndash;&gt;-->
+<!--            <mat-form-field class="transaction-field" appearance="legacy" >-->
+<!--              <mat-label class="transaction-field-label">Category</mat-label>-->
+<!--              &lt;!&ndash;Filter component: Select wallet&ndash;&gt;-->
+<!--              <mat-select class="transaction-input-field"-->
+<!--                          required-->
+<!--                          formControlName="category"-->
+<!--                          [disabled]="!transactionForm.controls.categoryType.value">-->
+<!--                <mat-option *ngFor="let category of filteredCategories" [value]="category.id">-->
+<!--                  {{category.name}}-->
+<!--                </mat-option>-->
+<!--              </mat-select>-->
+<!--              <mat-error *ngIf="transactionForm.controls.category.hasError('required')">-->
+<!--                Please choose an category-->
+<!--              </mat-error>-->
+<!--            </mat-form-field>-->
+<!--            &lt;!&ndash;End Card component: Wallet filter&ndash;&gt;-->
+<!--          </div>-->
+          <div><span>Type: </span><span>{{data.category.type.name}}</span></div>
         </div>
         <!--Card component: Note filter-->
         <mat-form-field class="transaction-field" appearance="legacy">

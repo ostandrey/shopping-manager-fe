@@ -19,6 +19,9 @@ const initWallet = {
 @Injectable()
 export class WalletService {
   // tslint:disable-next-line:variable-name
+  private _isLoading = new BehaviorSubject<boolean>(false);
+  readonly isLoading = this._isLoading.asObservable();
+  // tslint:disable-next-line:variable-name
   private _wallet = new BehaviorSubject<IWallet>(initWallet);
   readonly wallet = this._wallet.asObservable();
 
@@ -31,44 +34,52 @@ export class WalletService {
   ) {}
 
   getWalletById(id) {
+    this._isLoading.next(true);
     this.httpClient.get<IWallet>(`${environment.apiUrl}/wallets/${id}`)
       .subscribe(
         data => {
           this._wallet.next({...data});
+          this._isLoading.next(false);
         },
         error => {
           console.error(`Error ${error.status}: ${error.message}`);
           throwError(error);
+          this._isLoading.next(false);
         }
       );
   }
 
   addWallet(wallet) {
+    this._isLoading.next(true);
     this.httpClient.post<IWallet>(`${environment.apiUrl}/wallets`, wallet)
       .subscribe(
-        data => console.log('The wallet was added successfully'),
+        data => {
+          console.log('The wallet was added successfully');
+          this._isLoading.next(false);
+        },
         error => {
           console.error(`Error ${error.status}: ${error.message}`);
           throwError(error);
+          this._isLoading.next(false);
         }
       );
   }
 
   getWalletTypes() {
+    this._isLoading.next(true);
     this.httpClient.get<IWalletTypes[]>(`${environment.apiUrl}/wallets_type`)
       .subscribe(
         data => {
           this._walletTypes.next([...data]);
+          this._isLoading.next(false);
         },
         error => {
           console.error(`Error ${error.status}: ${error.message}`);
           throwError(error);
+          this._isLoading.next(false);
         }
       );
   }
-  // getWalletTypes(): Observable<IWalletTypes[]> {
-  //   return this.httpClient.get<IWalletTypes[]>(`${environment.apiUrl}/wallets_type`);
-  // }
 
   deleteWallet(id) {
     this.httpClient.delete<IWallet>(`${environment.apiUrl}/wallets/${id}`)

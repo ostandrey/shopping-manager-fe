@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {IWallet} from '../services/dataWallet/wallet.inteface';
 import {AddTransactionComponent} from '../../transaction/add-transaction/add-transaction.component';
 import {ITransaction} from '../../transaction/transaction.interface';
+import {User} from '../../user/user';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class WalletIDComponent implements OnInit {
 
   date = new FormControl(new Date());
   wallet$: Observable<IWallet>;
+  user$: Observable<User>;
+  isLoading$: Observable<boolean>;
   walletId: string;
 
   constructor(
@@ -38,7 +41,9 @@ export class WalletIDComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.user$ = this.userService.user;
     this.wallet$ = this.walletService.wallet;
+    this.isLoading$ = this.walletService.isLoading;
     this.walletId = this.route.snapshot.paramMap.get('walletId');
     this.walletService.getWalletById(this.walletId);
     this.dataSource.sort = this.sort;
@@ -50,11 +55,20 @@ export class WalletIDComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      let userId = 0;
+      this.user$.subscribe(user => userId = user.id);
+      this.wallet$.subscribe((data: IWallet) => {
+        const balance = parseFloat(String(data.balance)) + parseFloat(result.amount);
+        const body = {
+          id: data.id,
+          balance,
+          title: data.title,
+          type: data.type,
+          user: userId
+        };
+        this.walletService.editWallet(body.id, body);
+      }).unsubscribe();
       this.walletService.getWalletById(this.walletId);
-      // if (result) {
-        // this.dataSource.data = this.dataSource.data.concat(result);
-        // this.dataSource.data = [result, ...this.dataSource.data];
-      // }
     });
   }
 }

@@ -34,17 +34,6 @@ export class EditWalletComponent implements OnInit {
     this.types$ = this.walletService.walletTypes;
     this.userService.getUser();
     this.walletService.getWalletTypes();
-    // this.userService.user.subscribe(
-    //   (data: User) => {
-    //     this.userId = data.id;
-    //   }
-    // );
-    // this.walletService.getWalletTypes()
-    //   .subscribe(
-    //     (data: IWalletTypes[]) => {
-    //       this.walletTypes = data;
-    //     }
-    //   );
   }
 
   initializeForm(): void {

@@ -25,10 +25,10 @@
         </mat-form-field>
         <!--End Card component: Wallet filter-->
         <!--Card component: Note filter-->
-        <mat-form-field class="filter">
-          <mat-label class="filter-label">By note</mat-label>
-          <input matInput placeholder="Ex. Pizza" class="input-field">
-        </mat-form-field>
+<!--        <mat-form-field class="filter">-->
+<!--          <mat-label class="filter-label">By note</mat-label>-->
+<!--          <input matInput placeholder="Ex. Pizza" class="input-field">-->
+<!--        </mat-form-field>-->
         <!--End Card component: Note filter-->
         <!--Card component: Start date filter-->
         <mat-form-field class="filter">
@@ -61,7 +61,7 @@
       <!--Card component: Total balance-->
       <mat-card class="calculation-card">
         <mat-card-title class="calculation-title">Total Balance</mat-card-title>
-        <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+        <mat-card-content class="calculate-value">{{(wallet$ | async).balance}}</mat-card-content>
       </mat-card>
       <!--End Card component: Total balance-->
       <!--Card component: Total Period Change-->
@@ -88,12 +88,13 @@
     <!--End Module dashboard component: Calculations-->
  <!--Module dashboard component: Transaction List-->
   <div class="transaction-list"
-       *ngIf="(wallet$ | async).transaction && (wallet$ | async).transaction.length > 0;
-       else noTransactionList"
+       *ngIf="!(isLoading$ | async) && (wallet$ | async).transaction.length > 0"
   >
     <app-transaction-list></app-transaction-list>
   </div>
-  <ng-template #noTransactionList>
+  <div class="transaction-list"
+       *ngIf="!(isLoading$ | async) && (wallet$ | async).transaction.length == 0"
+  >
     <div class="no-transactions">
       <span>
        You have no transactions.
@@ -102,7 +103,10 @@
     <div class="no-transactions">
       <img src="src/assets/images/noTransactions.png" alt="image">
     </div>
-  </ng-template>
+  </div>
+  <div *ngIf="(isLoading$ | async)">
+    <mat-spinner></mat-spinner>
+  </div>
   <!--End Module dashboard component: Transaction List-->
 
 </div>

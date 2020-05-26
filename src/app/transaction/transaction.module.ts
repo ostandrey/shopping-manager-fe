@@ -16,6 +16,7 @@ import {MatListModule} from '@angular/material/list';
 import { TransactionListItemComponent } from './transaction-list-item/transaction-list-item.component';
 import { TransactionDeleteComponent } from './transaction-delete/transaction-delete.component';
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -27,19 +28,20 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
     TransactionDeleteComponent,
     TransactionEditComponent,
   ],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonModule,
-    MatListModule
-  ],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatTabsModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonModule,
+        MatListModule,
+        MatProgressSpinnerModule
+    ],
   exports: [
     AddTransactionComponent,
     TransactionListComponent,
