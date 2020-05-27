@@ -88,7 +88,7 @@ export class AddTransactionComponent implements OnInit {
   }
 
   addAmountPrefix(): void {
-    if (Number(this.transactionForm.value.categoryType) === 2) {
+    if (Number(this.transactionForm.value.categoryType) === 1) {
       this.transactionForm.controls.amount.setValue('-');
     }
   }

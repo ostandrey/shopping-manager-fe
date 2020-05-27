@@ -1,75 +1,108 @@
+<mat-card>
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      <li class="mat-tree-node">
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        {{node.name}}
+      </li>
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <li>
+        <div class="mat-tree-node">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}}
+        </div>
+        <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </ul>
+      </li>
+    </mat-nested-tree-node>
+  </mat-tree>
+</mat-card>
+
+
+
+
 <!--Module dashboard component: Overview-->
-<div class="overview">
-  <h2>Overview</h2>
-  <!--Module dashboard component: Overview-filter-->
-  <mat-card class="overview-card">
-    <mat-card-title class="overview-title">Filters</mat-card-title>
-    <!--Module dashboard component: Filters-->
-    <mat-card-content class="filters">
-      <!--Card component: Wallet filter-->
-      <mat-form-field class="filter-wallet">
-        <mat-label class="filter-label">Wallet</mat-label>
-        <!--Filter component: Select wallet-->
-        <mat-select class="input-field">
-          <mat-option  *ngFor="let wallet of Wallets" [value]="wallet.value">
-            {{wallet.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!--End Card component: Wallet filter-->
-      <!--Card component: Start date filter-->
-      <mat-form-field class="filter-date">
-        <mat-label class="filter-label">Start date</mat-label>
-        <!--Filter component: Select Start date-->
-        <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="date">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
-      <!--End Card component: Start date filter-->
-      <!--Card component: End date filter-->
-      <mat-form-field class="filter-date">
-        <mat-label class="filter-label">End date</mat-label>
-        <!--Filter component: Select End date-->
-        <input matInput class="input-field" [matDatepicker]="picker2" [formControl]="date">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-      <!--End Card component: End date filter-->
-    </mat-card-content>
-    <!--End Module dashboard component: Filters-->
-  </mat-card>
-  <!--End Module dashboard component: Overview-filter-->
-</div>
+<!--<div class="overview">-->
+<!--  <h2>Overview</h2>-->
+<!--  &lt;!&ndash;Module dashboard component: Overview-filter&ndash;&gt;-->
+<!--  <mat-card class="overview-card">-->
+<!--    <mat-card-title class="overview-title">Filters</mat-card-title>-->
+<!--    &lt;!&ndash;Module dashboard component: Filters&ndash;&gt;-->
+<!--    <mat-card-content class="filters">-->
+<!--      &lt;!&ndash;Card component: Wallet filter&ndash;&gt;-->
+<!--      <mat-form-field class="filter-wallet">-->
+<!--        <mat-label class="filter-label">Wallet</mat-label>-->
+<!--        &lt;!&ndash;Filter component: Select wallet&ndash;&gt;-->
+<!--        <mat-select class="input-field">-->
+<!--          <mat-option  *ngFor="let wallet of Wallets" [value]="wallet.value">-->
+<!--            {{wallet.viewValue}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      &lt;!&ndash;End Card component: Wallet filter&ndash;&gt;-->
+<!--      &lt;!&ndash;Card component: Start date filter&ndash;&gt;-->
+<!--      <mat-form-field class="filter-date">-->
+<!--        <mat-label class="filter-label">Start date</mat-label>-->
+<!--        &lt;!&ndash;Filter component: Select Start date&ndash;&gt;-->
+<!--        <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="date">-->
+<!--        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #picker1></mat-datepicker>-->
+<!--      </mat-form-field>-->
+<!--      &lt;!&ndash;End Card component: Start date filter&ndash;&gt;-->
+<!--      &lt;!&ndash;Card component: End date filter&ndash;&gt;-->
+<!--      <mat-form-field class="filter-date">-->
+<!--        <mat-label class="filter-label">End date</mat-label>-->
+<!--        &lt;!&ndash;Filter component: Select End date&ndash;&gt;-->
+<!--        <input matInput class="input-field" [matDatepicker]="picker2" [formControl]="date">-->
+<!--        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #picker2></mat-datepicker>-->
+<!--      </mat-form-field>-->
+<!--      &lt;!&ndash;End Card component: End date filter&ndash;&gt;-->
+<!--    </mat-card-content>-->
+<!--    &lt;!&ndash;End Module dashboard component: Filters&ndash;&gt;-->
+<!--  </mat-card>-->
+<!--  &lt;!&ndash;End Module dashboard component: Overview-filter&ndash;&gt;-->
+<!--</div>-->
 <!--End Module dashboard component: Overview-->
 <!--Module dashboard component: Calculations-->
-<div class="calculation">
-  <!--Module dashboard component: Calculation-list-->
-  <div class="calculation-list">
-    <!--Card component: Total balance-->
-    <mat-card class="calculation-card">
-      <mat-card-title class="calculation-title">Total Balance</mat-card-title>
-      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-    </mat-card>
-    <!--End Card component: Total balance-->
-    <!--Card component: Total Period Change-->
-    <mat-card class="calculation-card">
-      <mat-card-title class="calculation-title">Total Period Change</mat-card-title>
-      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-    </mat-card>
-    <!--End Card component: Total Period Change-->
-    <!--Card component: Total Period Expenses-->
-    <mat-card class="calculation-card">
-      <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>
-      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-    </mat-card>
-    <!--End Card component: Total Period Expenses-->
-    <!--Card component: Total Period Income-->
-    <mat-card class="calculation-card">
-      <mat-card-title class="calculation-title">Total Period Income</mat-card-title>
-      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
-    </mat-card>
-    <!--End Card component: Total Period Income-->
-  </div>
-  <!--End Module dashboard component: Calculation-list-->
-</div>
+<!--<div class="calculation">-->
+<!--  &lt;!&ndash;Module dashboard component: Calculation-list&ndash;&gt;-->
+<!--  <div class="calculation-list">-->
+<!--    &lt;!&ndash;Card component: Total balance&ndash;&gt;-->
+<!--    <mat-card class="calculation-card">-->
+<!--      <mat-card-title class="calculation-title">Total Balance</mat-card-title>-->
+<!--      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>-->
+<!--    </mat-card>-->
+<!--    &lt;!&ndash;End Card component: Total balance&ndash;&gt;-->
+<!--    &lt;!&ndash;Card component: Total Period Change&ndash;&gt;-->
+<!--    <mat-card class="calculation-card">-->
+<!--      <mat-card-title class="calculation-title">Total Period Change</mat-card-title>-->
+<!--      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>-->
+<!--    </mat-card>-->
+<!--    &lt;!&ndash;End Card component: Total Period Change&ndash;&gt;-->
+<!--    &lt;!&ndash;Card component: Total Period Expenses&ndash;&gt;-->
+<!--    <mat-card class="calculation-card">-->
+<!--      <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>-->
+<!--      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>-->
+<!--    </mat-card>-->
+<!--    &lt;!&ndash;End Card component: Total Period Expenses&ndash;&gt;-->
+<!--    &lt;!&ndash;Card component: Total Period Income&ndash;&gt;-->
+<!--    <mat-card class="calculation-card">-->
+<!--      <mat-card-title class="calculation-title">Total Period Income</mat-card-title>-->
+<!--      <mat-card-content class="calculate-value">+324234234.00</mat-card-content>-->
+<!--    </mat-card>-->
+<!--    &lt;!&ndash;End Card component: Total Period Income&ndash;&gt;-->
+<!--  </div>-->
+<!--  &lt;!&ndash;End Module dashboard component: Calculation-list&ndash;&gt;-->
+<!--</div>-->
 <!--End Module dashboard component: Calculations-->

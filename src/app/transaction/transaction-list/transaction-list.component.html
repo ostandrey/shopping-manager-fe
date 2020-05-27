@@ -22,10 +22,10 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <mat-spinner *ngIf="!(wallet$ | async).transaction"></mat-spinner>
-  <mat-list role="list" *ngIf="(wallet$ | async).transaction">
+  <mat-spinner *ngIf="!transactions"></mat-spinner>
+  <mat-list role="list" *ngIf="transactions">
     <mat-list-item role="listitem"
-                   *ngFor="let transaction of (wallet$ | async).transaction">
+                   *ngFor="let transaction of transactions">
       <app-transaction-list-item class="list-item" [transaction]= transaction ></app-transaction-list-item>
       <mat-divider></mat-divider>
     </mat-list-item>

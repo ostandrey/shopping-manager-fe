@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { DeleteWalletComponent } from './delete-wallet/delete-wallet.component';
 import { EditWalletComponent } from './edit-wallet/edit-wallet.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [WalletListComponent,
@@ -62,7 +63,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         HttpClientModule,
         TransactionModule,
         MatMenuModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTreeModule
     ],
   providers: [WalletService],
 })

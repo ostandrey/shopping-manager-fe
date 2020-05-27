@@ -17,6 +17,7 @@ import { TransactionListItemComponent } from './transaction-list-item/transactio
 import { TransactionDeleteComponent } from './transaction-delete/transaction-delete.component';
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -40,7 +41,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatInputModule,
         MatButtonModule,
         MatListModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatPaginatorModule
     ],
   exports: [
     AddTransactionComponent,

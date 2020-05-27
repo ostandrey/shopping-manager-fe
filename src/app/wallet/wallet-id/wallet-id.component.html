@@ -15,37 +15,47 @@
       <mat-card-title class="filter-title">Filters</mat-card-title>
       <!--Module dashboard component: Filters-->
       <mat-card-content class="filters">
+        <!--Card component: Type filter-->
+        <mat-form-field class="filter">
+          <mat-label class="filter-label">By type</mat-label>
+          <mat-select class="input-field"
+                      [(value)]="filterType"
+                      (selectionChange)="filterByType()">
+            <mat-option *ngFor="let type of types" value="{{type.id}}">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--End Card component: Note filter-->
         <!--Card component: Wallet filter-->
         <mat-form-field class="filter">
           <mat-label class="filter-label">By category</mat-label>
           <!--Filter component: Select wallet-->
-          <mat-select class="input-field">
-            Categories
+          <mat-select class="input-field"
+                      [(value)]="filterCategory"
+                      (selectionChange)="filterByCategory()">
+            <mat-option *ngFor="let categoryType of categories" [value]="categoryType.id">
+              {{categoryType.name}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
         <!--End Card component: Wallet filter-->
-        <!--Card component: Note filter-->
-<!--        <mat-form-field class="filter">-->
-<!--          <mat-label class="filter-label">By note</mat-label>-->
-<!--          <input matInput placeholder="Ex. Pizza" class="input-field">-->
-<!--        </mat-form-field>-->
-        <!--End Card component: Note filter-->
         <!--Card component: Start date filter-->
         <mat-form-field class="filter">
           <mat-label class="filter-label">Start date</mat-label>
           <!--Filter component: Select Start date-->
-          <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="date">
+          <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="filterStartDate">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
+          <mat-datepicker #picker1 (closed)="filterByDate()"></mat-datepicker>
         </mat-form-field>
         <!--End Card component: Start date filter-->
         <!--Card component: End date filter-->
         <mat-form-field class="filter">
           <mat-label class="filter-label">End date</mat-label>
           <!--Filter component: Select End date-->
-          <input matInput class="input-field" [matDatepicker]="picker2" [formControl]="date">
+          <input matInput class="input-field" [matDatepicker]="picker2" [formControl]="filterEndDate">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
+          <mat-datepicker #picker2 (closed)="filterByDate()"></mat-datepicker>
         </mat-form-field>
         <!--End Card component: End date filter-->
       </mat-card-content>
@@ -61,7 +71,14 @@
       <!--Card component: Total balance-->
       <mat-card class="calculation-card">
         <mat-card-title class="calculation-title">Total Balance</mat-card-title>
-        <mat-card-content class="calculate-value">{{(wallet$ | async).balance}}</mat-card-content>
+        <mat-card-content class="calculate-value"
+                          *ngIf="(wallet$ | async).balance > 0" style="color: #2dba75;">
+          +{{(wallet$ | async).balance}}
+        </mat-card-content>
+        <mat-card-content class="calculate-value"
+                          *ngIf="(wallet$ | async).balance < 0" style="color: #f14c52;">
+          {{(wallet$ | async).balance}}
+        </mat-card-content>
       </mat-card>
       <!--End Card component: Total balance-->
       <!--Card component: Total Period Change-->
@@ -90,7 +107,7 @@
   <div class="transaction-list"
        *ngIf="!(isLoading$ | async) && (wallet$ | async).transaction.length > 0"
   >
-    <app-transaction-list></app-transaction-list>
+    <app-transaction-list [transactions]="transactionsListToDisplay"></app-transaction-list>
   </div>
   <div class="transaction-list"
        *ngIf="!(isLoading$ | async) && (wallet$ | async).transaction.length == 0"

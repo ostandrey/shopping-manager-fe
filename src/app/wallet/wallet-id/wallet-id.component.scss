@@ -49,9 +49,6 @@
   color: #7b93a4;
 }
 
-.calculation{
-  padding-top: 5vmin;
-}
 
 .calculation-list{
   display: flex;
@@ -80,7 +77,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 2.5vmin;
-  color: #2dba75;
 }
 
 .transaction-list{
@@ -147,4 +143,97 @@ img{
   text-align: center;
   margin: auto;
   color: #7b93a4;
+}
+
+/*
+##Device = Desktops
+##Screen = 1281px to higher resolution desktops
+               */
+
+@media (min-width: 1281px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  //CSS
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+  .transaction-filters{
+    width: 100%;
+  }
+  .filters{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input-field{
+    font-size: 1.8vmin;
+    color: #7b93a4;
+  }
+
+  .filter-label{
+    font-size: 4.8vmin;
+    color: #7b93a4;
+  }
+
+
+  .btn-add-transaction{
+    width: 100%;
+    font-size: 4.8vmin;
+  }
+
+  .filter-title{
+    font-size: 4vmin;
+  }
+
 }
