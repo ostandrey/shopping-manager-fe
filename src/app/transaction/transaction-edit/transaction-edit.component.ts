@@ -15,9 +15,6 @@ import {WalletService} from '../../wallet/services/wallet-service';
 export class TransactionEditComponent implements OnInit {
 
   transactionForm: FormGroup;
-  filteredCategories: ICategory[];
-  categories$: Observable<ICategory[]>;
-  types$: Observable<ICategoryType[]>;
   wallet$: Observable<IWallet>;
 
   constructor(
@@ -29,11 +26,7 @@ export class TransactionEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    this.categories$ = this.transactionService.categories;
-    this.types$ = this.transactionService.catTypes;
     this.wallet$ = this.walletService.wallet;
-    this.transactionService.getTransactionCategories();
-    this.transactionService.getTransactionCategoryTypes();
   }
 
   onNoClick(): void {
@@ -46,21 +39,9 @@ export class TransactionEditComponent implements OnInit {
         Validators.required,
         Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')
       ]),
-      categoryType: new FormControl('', Validators.required),
-      category: new FormControl(this.data.category.id, Validators.required),
       description: new FormControl(this.data.description),
       date: new FormControl(this.data.date, Validators.required),
     });
-  }
-
-  filterCategories(): void {
-    this.categories$.subscribe(
-      (categories: ICategory[]) => {
-        this.filteredCategories = categories.filter(
-          category => category.type.id === Number(this.transactionForm.value.categoryType)
-        );
-      }
-    );
   }
 
   onSubmitEdit() {
@@ -70,14 +51,14 @@ export class TransactionEditComponent implements OnInit {
         walletId = data.id;
       }
     );
-    const {amount, description, date, category} = this.transactionForm.value;
+    const {amount, description, date} = this.transactionForm.value;
     const desc = description === null ? '' : description;
     const body = {
       id: this.data.id,
       amount: Number(amount),
       date,
       description: desc,
-      category: Number(category),
+      category: Number(this.data.category.id),
       wallet: walletId
     };
     this.transactionService.editTransaction(walletId, body);

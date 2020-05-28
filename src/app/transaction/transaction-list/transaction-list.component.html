@@ -4,6 +4,20 @@
       <span>
         Amount
       </span>
+      <button mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              (click)="$event.stopPropagation()">
+        <mat-icon>sort</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortTransactionsByAmount(1)">
+          Ascending
+        </button>
+        <button mat-menu-item (click)="sortTransactionsByAmount(-1)">
+          Descending
+        </button>
+      </mat-menu>
     </div>
     <div class="category-column">
       <span>
@@ -19,6 +33,20 @@
       <span>
         Date
       </span>
+      <button mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              (click)="$event.stopPropagation()">
+        <mat-icon>sort</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortTransactionsByDate(1)">
+          Ascending
+        </button>
+        <button mat-menu-item (click)="sortTransactionsByDate(-1)">
+          Descending
+        </button>
+      </mat-menu>
     </div>
   </div>
   <mat-divider></mat-divider>

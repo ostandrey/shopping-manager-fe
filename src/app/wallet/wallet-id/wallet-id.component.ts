@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../user/user.service';
 import {WalletService} from '../services/wallet-service';
@@ -32,16 +31,18 @@ export class WalletIDComponent implements OnInit {
   transactionsListToDisplay: ITransaction[];
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  // date = new FormControl(new Date());
   wallet$: Observable<IWallet>;
   user$: Observable<User>;
   isLoading$: Observable<boolean>;
   walletId: string;
 
-  filterCategory: any;
-  filterType: any;
-  filterStartDate = new FormControl(new Date());
+  filterCategory: any = '0';
+  filterType: any = '0';
+  filterStartDate = new FormControl(new Date('January 1, 2020'));
   filterEndDate = new FormControl(new Date());
+
+  totalPeriodExpenses: number;
+  totalPeriodIncomes: number;
 
   constructor(
     public dialog: MatDialog,
@@ -58,7 +59,8 @@ export class WalletIDComponent implements OnInit {
     this.wallet$ = this.walletService.wallet;
     this.walletService.wallet.subscribe((wallet: IWallet) => {
       this.transactionsList = wallet.transaction;
-      this.transactionsListToDisplay = wallet.transaction;
+      this.getTransactionsChange(wallet.transaction);
+      this.filter();
     });
     this.transactionService.categories.subscribe((categories: ICategory[]) => {
       this.categories = categories;
@@ -103,33 +105,59 @@ export class WalletIDComponent implements OnInit {
     });
   }
 
-  filterByType() {
-    this.transactionsListToDisplay = [];
-    this.transactionsList.forEach((transaction) => {
-      if (this.filterType === '1' && this.categoriesExpenses.indexOf(transaction.category.id) >= 0) {
-        this.transactionsListToDisplay.push(transaction);
-      }
-      if (this.filterType === '2' && this.categoriesIncomes.indexOf(transaction.category.id) >= 0) {
-        this.transactionsListToDisplay.push(transaction);
-      }
-    });
+  filter() {
+    this.transactionsListToDisplay = this.filterByCategory(this.filterByType(this.filterByDate(this.transactionsList)));
   }
 
-  filterByDate() {
-    this.transactionsListToDisplay = [];
-    this.transactionsList.forEach((transaction) => {
+  filterByDate(transactions: ITransaction[]): ITransaction[] {
+    const array: ITransaction[] = [];
+    transactions.forEach((transaction) => {
       if (Date.parse(`${transaction.date}`) >= Date.parse(`${this.filterStartDate.value}`)
         && Date.parse(`${transaction.date}`) <= Date.parse(`${this.filterEndDate.value}`)) {
-        this.transactionsListToDisplay.push(transaction);
+        array.push(transaction);
       }
     });
+    return array;
   }
 
-  filterByCategory() {
-    this.transactionsListToDisplay = [];
-    this.transactionsList.forEach((transaction) => {
+  filterByType(transactions: ITransaction[]): ITransaction[] {
+    const newArray: ITransaction[] = [];
+    if (this.filterType === '0') {
+      return transactions;
+    }
+    transactions.forEach((transaction) => {
+      if (this.filterType === '1' && this.categoriesExpenses.indexOf(transaction.category.id) >= 0) {
+        newArray.push(transaction);
+      }
+      if (this.filterType === '2' && this.categoriesIncomes.indexOf(transaction.category.id) >= 0) {
+        newArray.push(transaction);
+      }
+    });
+    return newArray;
+  }
+
+  filterByCategory(transactions: ITransaction[]): ITransaction[] {
+    const newArray = [];
+    if (this.filterCategory === '0') {
+      return transactions;
+    }
+    transactions.forEach((transaction) => {
       if (transaction.category.id === this.filterCategory) {
-        this.transactionsListToDisplay.push(transaction);
+        newArray.push(transaction);
+      }
+    });
+    return newArray;
+  }
+
+  getTransactionsChange(transactions: ITransaction[]) {
+    this.totalPeriodExpenses = 0;
+    this.totalPeriodIncomes = 0;
+    transactions.forEach((transaction: ITransaction) => {
+      if (this.categoriesExpenses.indexOf(transaction.category.id) >= 0) {
+        this.totalPeriodExpenses += transaction.amount;
+      }
+      if (this.categoriesIncomes.indexOf(transaction.category.id) >= 0) {
+        this.totalPeriodIncomes += transaction.amount;
       }
     });
   }

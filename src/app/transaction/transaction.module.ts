@@ -18,6 +18,8 @@ import { TransactionDeleteComponent } from './transaction-delete/transaction-del
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -29,21 +31,23 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TransactionDeleteComponent,
     TransactionEditComponent,
   ],
-    imports: [
-        CommonModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatTabsModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatInputModule,
-        MatButtonModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        MatPaginatorModule
-    ],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatMenuModule
+  ],
   exports: [
     AddTransactionComponent,
     TransactionListComponent,

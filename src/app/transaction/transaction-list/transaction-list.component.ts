@@ -25,4 +25,23 @@ export class TransactionListComponent implements OnInit, OnChanges {
     console.log(changes);
   }
 
+  sortTransactionsByAmount(param: number) {
+    this.transactions.sort((curr, next) => {
+      if (param > 0) {
+        return curr.amount - next.amount;
+      } else {
+        return next.amount - curr.amount;
+      }
+    });
+  }
+
+  sortTransactionsByDate(param: number) {
+    this.transactions.sort((curr, next) => {
+      if (param > 0) {
+        return Date.parse(`${next.date}`) - Date.parse(`${curr.date}`);
+      } else {
+        return Date.parse(`${curr.date}`) - Date.parse(`${next.date}`);
+      }
+    });
+  }
 }

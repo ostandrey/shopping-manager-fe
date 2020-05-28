@@ -21,7 +21,8 @@
             <mat-label class="filter-label">By type</mat-label>
             <mat-select class="input-field"
                         [(value)]="filterType"
-                        (selectionChange)="filterByType()">
+                        (selectionChange)="filter()">
+              <mat-option value="0">All</mat-option>
               <mat-option *ngFor="let type of types" value="{{type.id}}">
                 {{type.name}}
               </mat-option>
@@ -34,7 +35,8 @@
             <!--Filter component: Select wallet-->
             <mat-select class="input-field"
                         [(value)]="filterCategory"
-                        (selectionChange)="filterByCategory()">
+                        (selectionChange)="filter()">
+              <mat-option value="0">All</mat-option>
               <mat-option *ngFor="let categoryType of categories" [value]="categoryType.id">
                 {{categoryType.name}}
               </mat-option>
@@ -47,7 +49,7 @@
             <!--Filter component: Select Start date-->
             <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="filterStartDate">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1 (closed)="filterByDate()"></mat-datepicker>
+            <mat-datepicker #picker1 (closed)="filter()"></mat-datepicker>
           </mat-form-field>
           <!--End Card component: Start date filter-->
           <!--Card component: End date filter-->
@@ -56,7 +58,7 @@
             <!--Filter component: Select End date-->
             <input matInput class="input-field" [matDatepicker]="picker2" [formControl]="filterEndDate">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2 (closed)="filterByDate()"></mat-datepicker>
+            <mat-datepicker #picker2 (closed)="filter()"></mat-datepicker>
           </mat-form-field>
           <!--End Card component: End date filter-->
         </mat-card-content>
@@ -85,19 +87,19 @@
         <!--Card component: Total Period Change-->
         <mat-card class="calculation-card">
           <mat-card-title class="calculation-title">Total Period Change</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+          <mat-card-content class="calculate-value">{{totalPeriodIncomes + totalPeriodExpenses}}</mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Change-->
         <!--Card component: Total Period Expenses-->
         <mat-card class="calculation-card">
           <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+          <mat-card-content class="calculate-value">{{totalPeriodExpenses}}</mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Expenses-->
         <!--Card component: Total Period Income-->
         <mat-card class="calculation-card">
           <mat-card-title class="calculation-title">Total Period Income</mat-card-title>
-          <mat-card-content class="calculate-value">+324234234.00</mat-card-content>
+          <mat-card-content class="calculate-value">+{{totalPeriodIncomes}}</mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Income-->
       </div>
@@ -121,7 +123,7 @@
       </span>
     </div>
     <div class="no-transactions">
-      <img src="src/assets/images/noTransactions.png" alt="image">
+      <img src="assets/images/noTransactions.png" alt="image">
     </div>
   </div>
   <div *ngIf="(isLoading$ | async)">
