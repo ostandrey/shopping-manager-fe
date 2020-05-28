@@ -6,65 +6,27 @@ h2{
   padding-top: 3vmin;
 }
 
-.overview-card{
-  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
-}
-
-.overview-title{
-  font-weight: 600;
-  font-size: 2vmin;
-  color: #324c5b;
-}
-
-.filters{
-  display: flex;
-  justify-content: space-around;
-  padding-top: 1vmin;
-}
-
-.input-field{
-  font-size: 1.8vmin;
-  color: #7b93a4;
-}
-
-.filter-label{
-  font-size: 1.8vmin;
-  color: #7b93a4;
-}
-
-.calculation{
-  padding-top: 5vmin;
-}
-
-.calculation-list{
+.overview-content{
   display: flex;
   justify-content: space-between;
-  overflow-x: auto;
-  padding: 10px 0;
 }
 
-.calculation-card{
-  height: 5vmin;
-  width: 20vmin;
+.overview-card{
+  width: 20%;
   box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
-}
-
-.calculation-title{
-  font-size: 1.7vmin;
   color: #324c5b;
-  margin-bottom: 0.3em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
 }
 
-.calculate-value{
-  line-height: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 2.5vmin;
-  color: #2dba75;
+.card-content{
+  text-align: center;
+  font-size: 2vmin;
 }
+
+.icon-arrow{
+  font-size: 10vmin;
+}
+
 
 /*
   ##Device = Desktops
