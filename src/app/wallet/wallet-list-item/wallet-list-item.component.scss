@@ -1,10 +1,11 @@
 .wallet{
-  display: inline-block;
-  height: 13vmin;
+  display: flex;
+  height: 14vmin;
   width: 25vmin;
   box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
   cursor: pointer;
   user-select: none;
+  flex-direction: column;
 }
 
 .wallet:hover{
@@ -17,7 +18,7 @@
 }
 
 .wallet-title{
-  font-size: 2vmin;
+  font-size: 2.5vmin;
   color: #324c5b;
   flex-grow: 1;
   overflow: hidden;
@@ -26,6 +27,7 @@
 }
 
 .wallet-value{
+  margin-top: 1.5vmin;
   font-size: 2.5vmin;
   overflow: hidden;
   white-space: nowrap;

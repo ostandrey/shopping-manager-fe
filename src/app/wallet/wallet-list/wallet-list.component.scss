@@ -22,23 +22,35 @@ h2{
   padding: 1vmin 0;
 }
 
+.wallet-add{
+  display: flex;
+}
+
 .wallet-items{
   display: inline-block;
   margin: 0 0.5vmin;
 }
 
-
-.wallet-add{
+.add-new-wallet{
   display: flex;
-  width: 11%;
+  flex-direction: column;
   padding: 10px 0;
+  align-items: center;
+  text-align: center;
+  font-size: 2.5vmin;
 }
 
-.btn-add-wallet{
-  width: 18vmin;
+.wallet-add-button{
+  width: 50vmin;
+  height: 8vmin;
+  margin-top: 2vmin;
+}
+
+
+.btn-wallet-add{
   box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
   cursor: pointer;
-  color: #12c48b;
+  height: 20vmin;
 }
 
 .material-icons{

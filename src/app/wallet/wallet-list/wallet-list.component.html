@@ -26,21 +26,28 @@
       <!--End Module dashboard component: Wallets-list-->
       <div class="wallet-add">
         <button mat-button (click)="addWallet()">
-        <span class="material-icons">
-          add_circle_outline
-        </span>
+          <span class="material-icons">
+            add_circle_outline
+          </span>
         </button>
       </div>
     </div>
   </div>
-  <ng-template #noWalletList>There is no any wallet yet
-    <img src="src/assets/images/noTransactions.png" alt="image">
-    <div class="wallet-add">
-      <button mat-button (click)="addWallet()">
-        <span class="material-icons">
-          add_circle_outline
+  <ng-template #noWalletList>
+    <div class="add-new-wallet">
+      <div class="description">
+        <span>
+          There is no any wallet yet. <br>
+          Please press button "plus" to create wallet.
         </span>
-      </button>
+      </div>
+      <div>
+        <button class="wallet-add-button" mat-button (click)="addWallet()">
+          <span class="material-icons">
+            add_circle_outline
+          </span>
+        </button>
+      </div>
     </div>
   </ng-template>
 </div>

@@ -3,12 +3,13 @@ h2{
 }
 
 .overview{
-  padding-top: 3vmin;
+  padding-top: 1.5vmin;
 }
 
 .overview-content{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .overview-card{
