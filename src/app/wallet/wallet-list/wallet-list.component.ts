@@ -2,13 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {WalletService} from '../services/wallet-service';
 import {AddWalletComponent} from '../add-wallet/add-wallet.component';
 import {MatDialog} from '@angular/material/dialog';
-import {first} from 'rxjs/operators';
 import {UserService} from '../../user/user.service';
 import {User} from '../../user/user';
-import {Observable} from 'rxjs';
 import {IWallet} from '../services/dataWallet/wallet.inteface';
-
-
 
 @Component({
   selector: 'app-wallet-list',
