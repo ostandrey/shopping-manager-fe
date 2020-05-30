@@ -1,0 +1,135 @@
+<div class="wallet-id">
+  <!--Module dashboard component: Add Transaction-->
+  <div class="wallet-add-transaction">
+    <button mat-button class="btn-add-transaction" (click)="addTransaction()">
+      <span class="material-icons">add_circle</span>
+      Add transaction
+    </button>
+  </div>
+  <!--End Module dashboard component: Add Transaction-->
+
+  <div class="wallet-middle-section">
+    <!--Module dashboard component: Transaction Filters-->
+    <div class="transaction-filters">
+      <!--Module dashboard component: Overview-filter-->
+      <mat-card class="filter-card">
+        <mat-card-title class="filter-title">Filters</mat-card-title>
+        <!--Module dashboard component: Filters-->
+        <mat-card-content class="filters">
+          <!--Card component: Type filter-->
+          <mat-form-field class="filter">
+            <mat-label class="filter-label">By type</mat-label>
+            <mat-select class="input-field"
+                        [(value)]="filterType"
+                        (selectionChange)="filter()">
+              <mat-option value="0">All</mat-option>
+              <mat-option *ngFor="let type of types" value="{{type.id}}">
+                {{type.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!--End Card component: Note filter-->
+          <!--Card component: Wallet filter-->
+          <mat-form-field class="filter">
+            <mat-label class="filter-label">By category</mat-label>
+            <!--Filter component: Select wallet-->
+            <mat-select class="input-field"
+                        [(value)]="filterCategory"
+                        (selectionChange)="filter()">
+              <mat-option value="0">All</mat-option>
+              <mat-option *ngFor="let categoryType of categories" [value]="categoryType.id">
+                {{categoryType.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!--End Card component: Wallet filter-->
+          <!--Card component: Start date filter-->
+          <mat-form-field class="filter">
+            <mat-label class="filter-label">Start date</mat-label>
+            <!--Filter component: Select Start date-->
+            <input matInput class="input-field" [matDatepicker]="picker1" [formControl]="filterStartDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 (closed)="filter()"></mat-datepicker>
+          </mat-form-field>
+          <!--End Card component: Start date filter-->
+          <!--Card component: End date filter-->
+          <mat-form-field class="filter">
+            <mat-label class="filter-label">End date</mat-label>
+            <!--Filter component: Select End date-->
+            <input matInput class="input-field" [matDatepicker]="picker2" [formControl]="filterEndDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 (closed)="filter()"></mat-datepicker>
+          </mat-form-field>
+          <!--End Card component: End date filter-->
+        </mat-card-content>
+        <!--End Module dashboard component: Filters-->
+      </mat-card>
+      <!--End Module dashboard component: Overview-filter-->
+    </div>
+    <!--End Module dashboard component: Transaction Filters-->
+    <!--Module dashboard component: Calculations-->
+    <div class="calculation">
+      <!--Module dashboard component: Calculation-list-->
+      <div class="calculation-list">
+        <!--Card component: Total balance-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Balance</mat-card-title>
+          <mat-card-content class="calculate-value"
+                            *ngIf="(wallet$ | async).balance > 0" style="color: #2dba75;">
+            +{{(wallet$ | async).balance}}
+          </mat-card-content>
+          <mat-card-content class="calculate-value"
+                            *ngIf="(wallet$ | async).balance < 0" style="color: #f14c52;">
+            {{(wallet$ | async).balance}}
+          </mat-card-content>
+        </mat-card>
+        <!--End Card component: Total balance-->
+        <!--Card component: Total Period Change-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Period Change</mat-card-title>
+          <mat-card-content class="calculate-value">{{totalPeriodIncomes + totalPeriodExpenses}}</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total Period Change-->
+        <!--Card component: Total Period Expenses-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>
+          <mat-card-content class="calculate-value">{{totalPeriodExpenses}}</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total Period Expenses-->
+        <!--Card component: Total Period Income-->
+        <mat-card class="calculation-card">
+          <mat-card-title class="calculation-title">Total Period Income</mat-card-title>
+          <mat-card-content class="calculate-value">+{{totalPeriodIncomes}}</mat-card-content>
+        </mat-card>
+        <!--End Card component: Total Period Income-->
+      </div>
+      <!--End Module dashboard component: Calculation-list-->
+    </div>
+  </div>
+
+    <!--End Module dashboard component: Calculations-->
+ <!--Module dashboard component: Transaction List-->
+  <div class="transaction-list"
+       *ngIf="!(isLoading$ | async) && (wallet$ | async).transaction.length > 0"
+  >
+    <app-transaction-list [transactions]="transactionsListToDisplay"></app-transaction-list>
+  </div>
+  <div class="transaction-list"
+       *ngIf="!(isLoading$ | async) && (wallet$ | async).transaction.length == 0"
+  >
+    <div class="no-transactions">
+      <span>
+       You have no transactions.
+      </span>
+    </div>
+    <div class="no-transactions">
+      <img src="assets/images/noTransactions.png" alt="image">
+    </div>
+  </div>
+  <div *ngIf="(isLoading$ | async)" >
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  <!--End Module dashboard component: Transaction List-->
+
+</div>
+

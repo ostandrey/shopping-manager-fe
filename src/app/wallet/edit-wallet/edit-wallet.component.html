@@ -1,0 +1,74 @@
+<div class="container">
+  <mat-card-title class="add-wallet-title">Add a new wallet</mat-card-title>
+  <mat-card-subtitle>
+    Fill the form to create a new wallet
+  </mat-card-subtitle>
+  <mat-card-content>
+    <form [formGroup]="inputForm">
+      <div>
+        <!--Module dashboard component: Filters-->
+        <mat-card-content class="filters">
+          <!--Card component: Wallet filter-->
+          <mat-form-field class="filter">
+            <mat-label class="filter-label">Wallet type</mat-label>
+            <!--Filter component: Select wallet-->
+            <mat-select class="input-field"
+                        formControlName="type"
+                        required
+            >
+              <mat-option *ngFor="let type of (types$ | async)" value="{{type.id}}">
+                {{type.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="inputForm.controls.type.hasError('required')">
+              Please choose type of wallet
+            </mat-error>
+          </mat-form-field>
+          <!--End Card component: Wallet filter-->
+          <!--Card component: Note filter-->
+          <mat-form-field class="filter">
+            <mat-label class="filter-label">Name of wallet</mat-label>
+            <input matInput
+                   type="text"
+                   class="input-field"
+                   required
+                   formControlName="title">
+            <mat-error *ngIf="inputForm.controls.title.hasError('required')">
+              Please name your wallet
+            </mat-error>
+          </mat-form-field>
+          <!--End Card component: Note filter-->
+          <!--Card component: Note filter-->
+          <mat-form-field class="filter" id="filter-note">
+            <mat-label class="filter-label">Balance</mat-label>
+            <input matInput
+                   type="text"
+                   class="input-field"
+                   formControlName="balance"
+                   required
+                   placeholder="0.00">
+            <mat-error *ngIf="inputForm.controls.balance.hasError('required')">
+              Please input number balance
+            </mat-error>
+          </mat-form-field>
+          <!--End Card component: Note filter-->
+        </mat-card-content>
+        <!--End Module dashboard component: Filters-->
+      </div>
+      <div mat-dialog-actions class="btn-container">
+        <button mat-raised-button
+                class="btn-add"
+                [disabled]="inputForm.invalid"
+                [mat-dialog-close]="inputForm.value"
+                (click)="onSubmitEdit()">
+          Edit wallet
+        </button>
+        <button mat-raised-button
+                (click)="onNoClick()"
+                class="btn-cancel">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</div>

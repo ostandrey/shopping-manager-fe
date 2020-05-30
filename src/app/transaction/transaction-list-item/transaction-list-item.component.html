@@ -1,0 +1,22 @@
+<div class="trans-list-content">
+  <div class="trans-list-amount" *ngIf="transaction.amount > 0" style="color: #2dba75;">
+    <span >+{{transaction.amount}}</span>
+  </div>
+  <div class="trans-list-amount" *ngIf="transaction.amount < 0" style="color: #f14c52;">
+    <span >{{transaction.amount}}</span>
+  </div>
+  <div class="trans-list-category">
+    <span >{{transaction.category.name}}</span>
+  </div>
+  <div class="trans-list-description">
+    <span >{{transaction.description}}</span>
+  </div>
+  <div class="trans-list-date">
+    <span >{{transaction.date | date}}</span>
+  </div>
+  <div class="trans-btn">
+    <span class="trans-list-edit material-icons" (click)="transactionEdit()">create</span>
+    <span class="trans-list-delete material-icons"
+          (click)="transactionDelete()">delete</span>
+  </div>
+</div>

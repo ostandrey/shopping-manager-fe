@@ -1,0 +1,62 @@
+<mat-card class="transaction-card">
+  <div class="card-header">
+    <div class="amount-column">
+      <span>
+        Amount
+      </span>
+      <button mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              (click)="$event.stopPropagation()">
+        <mat-icon>sort</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortTransactionsByAmount(1)">
+          Ascending
+        </button>
+        <button mat-menu-item (click)="sortTransactionsByAmount(-1)">
+          Descending
+        </button>
+      </mat-menu>
+    </div>
+    <div class="category-column">
+      <span>
+        Category
+      </span>
+    </div>
+    <div class="description-column">
+      <span>
+        Description
+      </span>
+    </div>
+    <div class="date-column">
+      <span>
+        Date
+      </span>
+      <button mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              (click)="$event.stopPropagation()">
+        <mat-icon>sort</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortTransactionsByDate(1)">
+          Ascending
+        </button>
+        <button mat-menu-item (click)="sortTransactionsByDate(-1)">
+          Descending
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-spinner class="spinner" *ngIf="!transactions"></mat-spinner>
+  <mat-list role="list" *ngIf="transactions">
+    <mat-list-item role="listitem"
+                   *ngFor="let transaction of transactions">
+      <app-transaction-list-item class="list-item" [transaction]= transaction ></app-transaction-list-item>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+

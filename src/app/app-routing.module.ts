@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ShoppingListsComponent} from './shopping-lists/shopping-lists.component';
-import {TrashComponent} from './trash/trash.component';
-import {MyShoppingListComponent} from './my-shopping-list/my-shopping-list.component';
-
+import {WalletDashboardComponent} from './wallet/wallet-dashboard/wallet-dashboard.component';
+import {WalletIDComponent} from './wallet/wallet-id/wallet-id.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
-  {path: 'shopping-lists', component: ShoppingListsComponent},
-  {path: 'trash', component: TrashComponent},
-  {path: 'my-shopping-list', component: MyShoppingListComponent}
+  { path: 'dashboard', component: WalletDashboardComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard/:walletId', component: WalletIDComponent},
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -16,5 +17,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-export const routingComponents = [ShoppingListsComponent, TrashComponent];

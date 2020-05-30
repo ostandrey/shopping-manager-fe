@@ -1,5 +1,11 @@
-<div>
-  <app-navbar>
+<mat-toolbar id="toolbar">
+  <a routerLink="dashboard">
+    MoneyManager
+  </a>
+  <app-user></app-user>
+</mat-toolbar>
+<section>
+  <div id="container">
     <router-outlet></router-outlet>
-  </app-navbar>
-</div>
+  </div>
+</section>

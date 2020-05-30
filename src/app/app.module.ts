@@ -1,11 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {FormsModule} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -14,32 +11,27 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
-
-import { ShoppingListsComponent } from './shopping-lists/shopping-lists.component';
-import { TrashComponent } from './trash/trash.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {WalletModule} from './wallet/wallet.module';
 import { LoginComponent } from './login/login.component';
-import { MyShoppingListComponent } from './my-shopping-list/my-shopping-list.component';
-import { CreateListComponent } from './create-list/create-list.component';
-import { CreateListService} from './create-list/create-list.service';
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {JwtInterceptor} from './auth/jwt.interceptor';
+import {ErrorInterceptor} from './auth/error.interceptor';
+import {fakeBackendProvider} from './auth/fake-backend';
+import {UserModule} from './user/user.module';
+import {TransactionModule} from './transaction/transaction.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    ShoppingListsComponent,
-    routingComponents,
-    TrashComponent,
-    LoginComponent,
-    MyShoppingListComponent,
-    CreateListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -51,18 +43,27 @@ import { CreateListService} from './create-list/create-list.service';
     MatMenuModule,
     MatListModule,
     MatButtonModule,
-    MatDialogModule,
     MatTabsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    MatProgressBarModule,
     ReactiveFormsModule,
-    MatGridListModule,
-    MatCardModule
+    MatSelectModule,
+    WalletModule,
+    HttpClientModule,
+    UserModule,
+    TransactionModule
   ],
-  providers: [CreateListService],
-  bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, CreateListComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
