@@ -68,3 +68,17 @@ h2{
   }
 
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  #container{
+    width: 90%;
+  }
+
+  section{
+    width: 100%;
+    height: 105%;
+    color: #324c5b;
+    background: rgb(250, 250, 252);
+  }
+}

@@ -3,13 +3,16 @@ h2{
 }
 
 .overview{
-  padding-top: 1.5vmin;
+  display: flex;
+  padding-top: 6vmin;
+  cursor: default;
+  user-select: none;
 }
 
 .overview-content{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 }
 
 .overview-card{
@@ -24,8 +27,20 @@ h2{
   font-size: 2vmin;
 }
 
+.icon-container{
+  display: flex;
+  align-items: center;
+}
+
 .icon-arrow{
   font-size: 10vmin;
+}
+
+
+
+.icon{
+  font-size: 5vmin;
+  margin-bottom: 10px;
 }
 
 
@@ -78,9 +93,21 @@ h2{
   ##Screen = B/w 481px to 767px
 */
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 551px) and (max-width: 767px) {
 
-  //CSS
+  .overview{
+    display: flex;
+    padding-top: 16vmin;
+  }
+
+}
+
+@media (min-width: 481px) and (max-width: 551px) {
+
+  .overview{
+    display: flex;
+    padding-top: 20vmin;
+  }
 
 }
 
@@ -91,5 +118,16 @@ h2{
 
 @media (min-width: 320px) and (max-width: 480px) {
 
+  .overview{
+    display: flex;
+    padding-top: 30vmin;
+  }
+
+  .overview-card{
+    width: 20%;
+    box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+    color: #324c5b;
+
+  }
 
 }

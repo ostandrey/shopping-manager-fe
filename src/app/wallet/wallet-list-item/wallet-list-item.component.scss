@@ -33,3 +33,88 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  .wallet{
+    height: 20vmin;
+    width: 32vmin;
+  }
+
+  .wallet-value{
+    margin-top: 4.5vmin;
+    font-size: 3.5vmin;
+  }
+
+}
+
+@media (min-width: 550px) and (max-width: 631px) {
+
+  .wallet{
+    height: 20vmin;
+    width: 35vmin;
+  }
+
+  .wallet-value{
+    margin-top: 4.5vmin;
+    font-size: 3.5vmin;
+  }
+
+}
+
+@media (min-width: 481px) and (max-width: 551px) {
+
+  .wallet{
+    height: 23vmin;
+    width: 40vmin;
+    margin: 0 0.8vmin;
+  }
+
+  .wallet-title{
+    font-size: 3.5vmin;
+  }
+
+  .wallet-value{
+    margin-top: 5vmin;
+    font-size: 4.5vmin;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .wallet-container{
+    width: 100%;
+  }
+
+  .wallet{
+    height: 25vmin;
+    width: 100%;
+    margin: 0 0.8vmin;
+  }
+
+  .wallet-title{
+    font-size: 3.5vmin;
+  }
+
+  .wallet-type{
+    margin-bottom: 1.2vmin;
+  }
+
+  .wallet-value{
+    margin-top: unset;
+    font-size: 5.3vmin;
+  }
+
+}

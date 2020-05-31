@@ -46,7 +46,7 @@ mat-label{
 }
 
 .btn-login{
-  margin-top: 10px;
+  margin: 10px 0;
   background-color: #12c48b;
   color: #fff;
   box-shadow: 0 4px 4px 0 rgba(17, 195, 139, .2);
@@ -84,7 +84,7 @@ mat-label{
 @media (min-width: 1025px) and (max-width: 1280px) {
 
   .login-form{
-    max-width: 60%;
+    max-width: 55%;
     margin: auto;
   }
 
@@ -128,6 +128,15 @@ mat-label{
     margin: auto;
   }
 
+  .login-section{
+    width: 60%;
+    margin: auto;
+  }
+
+  mat-label{
+    font-size: 2vmin;
+  }
+
 }
 
 @media (min-width: 540px) and (max-width: 650px) {
@@ -135,10 +144,49 @@ mat-label{
     max-width: 80%;
     margin: auto;
   }
+
+  .login-section{
+    width: 60%;
+    margin: auto;
+  }
+
+  mat-label{
+    font-size: 2.5vmin;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 539px) {
+  .login-form{
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .login-section{
+    width: 65%;
+    margin: auto;
+  }
+
+  mat-label{
+    font-size: 3vmin;
+  }
+
 }
 
 
-@media (min-width: 320px) and (max-width: 480px) and (orientation: portrait) {
+@media (min-width: 320px) and (max-width: 480px) {
 
+  .login-form{
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .login-section{
+    width: 70%;
+    margin: auto;
+  }
+
+  mat-label{
+    font-size: 4vmin;
+  }
 
 }

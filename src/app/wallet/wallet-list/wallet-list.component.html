@@ -4,30 +4,32 @@
   <!--Module dashboard component: Wallets-->
   <div *ngIf="walletList && walletList.length > 0; else noWalletList">
     <h3>Tracked cards: {{walletList.length}}</h3>
-    <div id="wallets-container" class="wallets-container">
-      <button mat-button class="left-arrow-btn"
-        (click)="prev()">
+    <div class="wallets-container">
+      <div class="wallets-box">
+        <button mat-button class="left-arrow-btn"
+                (click)="prev()">
         <span class="material-icons">
           keyboard_arrow_left
         </span>
-      </button>
-      <!--Module dashboard component: Wallets-list-->
-      <div id="wallets-list-container" class="wallets-list">
-        <!--Module dashboard component: Wallet-->
-        <div  class="wallet-items" *ngFor="let wallet of walletList">
-          <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
+        </button>
+        <!--Module dashboard component: Wallets-list-->
+        <div id="wallets-list-container" class="wallets-list">
+          <!--Module dashboard component: Wallet-->
+          <div  class="wallet-items" *ngFor="let wallet of walletList">
+            <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
+          </div>
+          <!--End Module dashboard component: Wallet-->
         </div>
-        <!--End Module dashboard component: Wallet-->
-      </div>
-      <button mat-button class="right-arrow-btn"
-              (click)="next()">
+        <button mat-button class="right-arrow-btn"
+                (click)="next()">
         <span class="material-icons">
           keyboard_arrow_right
         </span>
-      </button>
+        </button>
+      </div>
       <!--End Module dashboard component: Wallets-list-->
       <div class="wallet-add">
-        <button mat-button (click)="addWallet()">
+        <button mat-button (click)="addWallet()" class="btn-wallet-add">
           <span class="material-icons">
             add_circle_outline
           </span>

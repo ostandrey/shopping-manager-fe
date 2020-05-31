@@ -277,8 +277,13 @@ img{
 
 @media (min-width: 320px) and (max-width: 480px) and (orientation: portrait) {
 
+  .wallet-middle-section{
+    display: flex;
+    margin-bottom: 20px;
+  }
+
   .transaction-filters{
-    width: 100%;
+    width: 60%;
   }
   .filters{
     display: flex;
@@ -304,6 +309,34 @@ img{
 
   .filter-title{
     font-size: 4vmin;
+  }
+
+  .calculation{
+    display: flex;
+    width: 50%;
+    padding-top: 3vmin;
+  }
+
+  .calculation-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: unset;
+  }
+
+  .calculation-card{
+    width: 65%;
+    margin: 1px auto 5px;
+    text-align: center;
+    height: 8vmin;
+  }
+
+  .calculation-title{
+    font-size: 2.5vmin;
+  }
+
+  .calculate-value{
+    font-size: 3.5vmin;
   }
 
 }

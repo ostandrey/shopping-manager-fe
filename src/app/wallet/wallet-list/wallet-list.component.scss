@@ -14,10 +14,15 @@ h2{
   height: 20vmin;
 }
 
+.wallets-box{
+  display: flex;
+  width: 90%;
+}
+
 //all displays are flex. Wallets-list with *flex-wrap* + overflow-x
 .wallets-list{
   display: flex;
-  width: 75%;
+  width: 90%;
   overflow: hidden;
   padding: 1vmin 0;
   position: relative;
@@ -26,13 +31,15 @@ h2{
 
 .wallet-add{
   display: flex;
+  width: 10%;
 }
 
 .wallet-items{
-  display: inline-block;
+  display: flex;
   margin: 0 0.5vmin;
   transition-property: transform;
   transition-duration: 0.5s;
+  flex-direction: row;
 }
 
 .add-new-wallet{
@@ -52,7 +59,7 @@ h2{
 
 
 .btn-wallet-add{
-  box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  width: 100%;
   cursor: pointer;
   height: 20vmin;
 }
@@ -120,11 +127,135 @@ h2{
   ##Screen = B/w 481px to 767px
 */
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 671px) and (max-width: 767px) {
 
-  //CSS
+  .wallets-container {
+    display: flex;
+    height: 22vmin;
+    flex-direction: column;
+  }
+
+  .wallets-box {
+    width: 100%;
+  }
+
+  .wallets-list{
+    padding: 1.5vmin 0;
+  }
+
+  .wallet-add{
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-wallet-add{
+    width: 60%;
+    margin: 2vmin auto;
+    cursor: pointer;
+    height: 7vmin;
+    box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  }
+}
+
+@media (min-width: 631px) and (max-width: 670px) {
+
+  .wallets-container {
+    display: flex;
+    height: 30vmin;
+    flex-direction: column;
+  }
+
+  .wallets-box {
+    width: 100%;
+  }
+
+  .wallets-list{
+    padding: 1.5vmin 0;
+    height: 25vmin;
+  }
+
+  .wallet-add{
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-wallet-add{
+    width: 60%;
+    margin: 2vmin auto;
+    cursor: pointer;
+    height: 10vmin;
+    box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  }
+}
+
+@media (min-width: 550px) and (max-width: 631px) {
+
+  .wallets-container {
+    display: flex;
+    height: 30vmin;
+    flex-direction: column;
+  }
+
+  .wallets-box {
+    width: 100%;
+  }
+
+  .wallets-list{
+    padding: 1.5vmin 0;
+    height: 26vmin;
+  }
+
+  .wallet-add{
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-wallet-add{
+    width: 70%;
+    margin: 2vmin auto;
+    cursor: pointer;
+    height: 10vmin;
+    box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 549px) {
+
+  .wallets-container {
+    display: flex;
+    height: 30vmin;
+    flex-direction: column;
+  }
+
+  .wallets-box {
+    width: 100%;
+  }
+
+  .wallets-list{
+    padding: 1.5vmin 0;
+    height: 30vmin;
+  }
+
+  .wallet-add{
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-wallet-add{
+    width: 80%;
+    margin: 2vmin auto;
+    cursor: pointer;
+    height: 10vmin;
+    box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  }
+
+  h2{
+    font-size: 4.5vmin;
+  }
 
 }
+
+
 
 /*
   ##Device = Most of the Smartphones Mobiles (Portrait)
@@ -132,6 +263,44 @@ h2{
 */
 
 @media (min-width: 320px) and (max-width: 480px) {
+  .wallets-container {
+    display: flex;
+    height: 30vmin;
+    flex-direction: column;
+  }
 
+  .wallets-box {
+    width: 100%;
+  }
+
+  .wallets-list{
+    padding: 1.5vmin 0;
+    height: 35vmin;
+  }
+
+  .wallet-add{
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-wallet-add{
+    width: 100%;
+    margin: 2vmin auto;
+    cursor: pointer;
+    height: 12vmin;
+    box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+  }
+
+  h2{
+    font-size: 4.5vmin;
+  }
+
+  .wallet-items{
+    width: 100%;
+  }
+
+  app-wallet-list-item{
+    width: 80%;
+  }
 
 }
