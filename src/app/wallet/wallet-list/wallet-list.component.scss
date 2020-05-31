@@ -20,6 +20,8 @@ h2{
   width: 75%;
   overflow: hidden;
   padding: 1vmin 0;
+  position: relative;
+  left: 0;
 }
 
 .wallet-add{
@@ -29,6 +31,8 @@ h2{
 .wallet-items{
   display: inline-block;
   margin: 0 0.5vmin;
+  transition-property: transform;
+  transition-duration: 0.5s;
 }
 
 .add-new-wallet{
@@ -60,6 +64,7 @@ h2{
 
 .right-arrow-btn{
   box-shadow: -7px 0px 8px -8px rgba(0,0,0,0.55);
+  z-index: 50;
 }
 
 .left-arrow-btn{

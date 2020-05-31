@@ -14,6 +14,9 @@ import {IWallet} from '../services/dataWallet/wallet.inteface';
 export class WalletListComponent implements OnInit {
 
   walletList: IWallet[];
+  _walletsContainer: HTMLElement;
+  _walletsListContainer: HTMLElement;
+  _walletsConunter: number = 0;
 
   constructor(
     private userService: UserService,
@@ -36,6 +39,44 @@ export class WalletListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.userService.getUser();
+    });
+  }
+
+  get walletsContainer(): HTMLElement {
+    if (!this._walletsContainer) {
+      this._walletsContainer = document.getElementById('wallets-container');
+      return this._walletsContainer;
+    }
+    return this._walletsContainer;
+  }
+
+  get walletsListContainer(): HTMLElement {
+    if (!this._walletsListContainer) {
+      this._walletsListContainer = document.getElementById('wallets-list-container');
+      return this._walletsListContainer;
+    }
+    return this._walletsListContainer;
+  }
+
+  prev() {
+    if (this._walletsConunter >= 0) {
+      return;
+    }
+    this._walletsConunter++;
+    Array.from(this.walletsListContainer.children).forEach((card: HTMLElement) => {
+      console.log(card);
+      card.style.transform = `translateX(${this._walletsConunter * card.clientWidth}px)`;
+    });
+  }
+
+  next() {
+    if (this._walletsConunter <= -(this.walletsListContainer.children.length - 1)) {
+      return;
+    }
+    this._walletsConunter--;
+    Array.from(this.walletsListContainer.children).forEach((card: HTMLElement) => {
+      console.log(card);
+      card.style.transform = `translateX(${this._walletsConunter * card.clientWidth}px)`;
     });
   }
 }

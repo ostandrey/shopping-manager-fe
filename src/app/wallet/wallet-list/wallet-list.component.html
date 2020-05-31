@@ -4,21 +4,23 @@
   <!--Module dashboard component: Wallets-->
   <div *ngIf="walletList && walletList.length > 0; else noWalletList">
     <h3>Tracked cards: {{walletList.length}}</h3>
-    <div class="wallets-container">
-      <button mat-button class="left-arrow-btn">
+    <div id="wallets-container" class="wallets-container">
+      <button mat-button class="left-arrow-btn"
+        (click)="prev()">
         <span class="material-icons">
           keyboard_arrow_left
         </span>
       </button>
       <!--Module dashboard component: Wallets-list-->
-      <div class="wallets-list">
+      <div id="wallets-list-container" class="wallets-list">
         <!--Module dashboard component: Wallet-->
         <div  class="wallet-items" *ngFor="let wallet of walletList">
           <app-wallet-list-item [wallet]="wallet"></app-wallet-list-item>
         </div>
         <!--End Module dashboard component: Wallet-->
       </div>
-      <button mat-button class="right-arrow-btn">
+      <button mat-button class="right-arrow-btn"
+              (click)="next()">
         <span class="material-icons">
           keyboard_arrow_right
         </span>
