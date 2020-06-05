@@ -4,7 +4,7 @@
     <mat-card-subtitle>Fill the form to add a new transaction to the wallet</mat-card-subtitle>
     <!--Module dashboard component: Filters-->
     <mat-card-content class="transaction-form">
-      <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="transactionForm">
         <div class="transaction-header-fields">
           <div class="transaction-select-field"
                *ngIf="types$ && (types$ | async).length > 0">
@@ -90,6 +90,7 @@
                   class="btn btn-add"
                   [disabled]="transactionForm.invalid"
                   [mat-dialog-close]="transactionForm.value"
+                  (click)="onSubmit()"
 
           >
             Add transaction

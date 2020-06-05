@@ -6,6 +6,7 @@
   font-size: 3vmin;
   text-align: center;
   margin: 25px;
+  user-select: none;
 }
 
 .subtitle{
@@ -23,6 +24,7 @@ mat-label{
   margin: auto;
   padding: 10px;
   color: #7b93a4;
+  user-select: none;
 }
 
 .tab{
