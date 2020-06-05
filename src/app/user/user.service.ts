@@ -29,4 +29,8 @@ export class UserService {
         }
       );
   }
+
+  logout() {
+    this._user.next(initUser);
+  }
 }
