@@ -76,30 +76,30 @@
           <mat-card-title class="calculation-title">Total Balance</mat-card-title>
           <mat-card-content class="calculate-value"
                             *ngIf="(wallet$ | async).balance > 0" style="color: #2dba75;">
-            +{{(wallet$ | async).balance}}
+            +{{(wallet$ | async).balance | number:'1.2-2'}}
           </mat-card-content>
           <mat-card-content class="calculate-value"
                             *ngIf="(wallet$ | async).balance < 0" style="color: #f14c52;">
-            {{(wallet$ | async).balance}}
+            {{(wallet$ | async).balance | number:'1.2-2'}}
           </mat-card-content>
         </mat-card>
         <!--End Card component: Total balance-->
         <!--Card component: Total Period Change-->
         <mat-card class="calculation-card">
           <mat-card-title class="calculation-title">Total Period Change</mat-card-title>
-          <mat-card-content class="calculate-value">{{totalPeriodIncomes + totalPeriodExpenses}}</mat-card-content>
+          <mat-card-content class="calculate-value">{{totalPeriodIncomes + totalPeriodExpenses | number:'1.2-2'}}</mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Change-->
         <!--Card component: Total Period Expenses-->
         <mat-card class="calculation-card">
           <mat-card-title class="calculation-title">Total Period Expenses</mat-card-title>
-          <mat-card-content class="calculate-value">{{totalPeriodExpenses}}</mat-card-content>
+          <mat-card-content class="calculate-value">{{totalPeriodExpenses | number:'1.2-2'}}</mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Expenses-->
         <!--Card component: Total Period Income-->
         <mat-card class="calculation-card">
           <mat-card-title class="calculation-title">Total Period Income</mat-card-title>
-          <mat-card-content class="calculate-value">+{{totalPeriodIncomes}}</mat-card-content>
+          <mat-card-content class="calculate-value">+{{totalPeriodIncomes | number:'1.2-2'}}</mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Income-->
       </div>

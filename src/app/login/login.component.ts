@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../user/authentification.service';
 import {first} from 'rxjs/operators';
 import {UserService} from '../user/user.service';
+import {Observable} from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,12 +18,15 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  message$: Observable<string>;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -43,6 +48,18 @@ export class LoginComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+
+    this.message$ = this.userService.message;
+    this.message$.subscribe(
+      data => {
+        if (!data && data === '') {
+          return;
+        }
+        this.snackBar.open(data, '', {
+          duration: 2000,
+        });
+      }
+    );
   }
 
   get f() { return this.loginForm.controls; }
@@ -70,10 +87,10 @@ export class LoginComponent implements OnInit {
 
   onSubmitSignUp() {
     this.submitted = true;
-
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this.signUpForm.invalid) {
       return;
     }
+    this.userService.addUser(this.signUpForm.value);
   }
 }

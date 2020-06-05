@@ -7,7 +7,7 @@ import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'dashboard', component: WalletDashboardComponent, canActivate: [AuthGuard]},
-  { path: 'dashboard/:walletId', component: WalletIDComponent},
+  { path: 'dashboard/:walletId', component: WalletIDComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'login', component: LoginComponent}
 ];

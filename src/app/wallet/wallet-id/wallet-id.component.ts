@@ -154,10 +154,10 @@ export class WalletIDComponent implements OnInit {
     this.totalPeriodIncomes = 0;
     transactions.forEach((transaction: ITransaction) => {
       if (this.categoriesExpenses.indexOf(transaction.category.id) >= 0) {
-        this.totalPeriodExpenses += transaction.amount;
+        this.totalPeriodExpenses += parseFloat(`${transaction.amount}`);
       }
       if (this.categoriesIncomes.indexOf(transaction.category.id) >= 0) {
-        this.totalPeriodIncomes += transaction.amount;
+        this.totalPeriodIncomes += parseFloat(`${transaction.amount}`);
       }
     });
   }

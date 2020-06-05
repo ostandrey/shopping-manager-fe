@@ -72,7 +72,7 @@
             <h1>Sign up to MoneyManager</h1>
           </div>
           <div class="login-section">
-            <form [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUp()">
+            <form [formGroup]="signUpForm">
               <div class="login-field">
                 <mat-form-field appearance="legacy" class="login-field">
                   <mat-label for="username">Login</mat-label>
@@ -138,9 +138,9 @@
                 </mat-form-field>
               </div>
               <button mat-raised-button
+                      class="btn-login"
                       [disabled]="signUpForm.invalid"
-                      class="btn-login">
-                <span *ngIf="loading"></span>
+                      (click)="onSubmitSignUp()">
                 Sign up
               </button>
               <div *ngIf="error">{{error}}</div>

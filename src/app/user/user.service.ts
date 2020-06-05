@@ -18,6 +18,9 @@ export class UserService {
   // tslint:disable-next-line:variable-name
   private _user = new BehaviorSubject<User>(initUser);
   readonly user = this._user.asObservable();
+  // tslint:disable-next-line:variable-name
+  private _message = new BehaviorSubject<string>('');
+  readonly message = this._message.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +29,19 @@ export class UserService {
       .subscribe(
         data => {
           this._user.next({...data});
+        }
+      );
+  }
+
+  addUser(body) {
+    this.http.post<User>(`${environment.apiUrl}/user`, body)
+      .subscribe(
+        data => {
+          this._message.next('User was created successfully');
+        },
+        error => {
+          console.error(`Error ${error.status}: ${error.message}`);
+          this._message.next('Something went wrong');
         }
       );
   }

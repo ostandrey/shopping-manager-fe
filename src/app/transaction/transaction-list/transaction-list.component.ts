@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {WalletService} from '../../wallet/services/wallet-service';
 import {Observable} from 'rxjs';
 import {IWallet} from '../../wallet/services/dataWallet/wallet.inteface';
@@ -9,7 +9,7 @@ import {ITransaction} from '../transaction.interface';
   templateUrl: './transaction-list.component.html',
   styleUrls: ['./transaction-list.component.scss']
 })
-export class TransactionListComponent implements OnInit, OnChanges {
+export class TransactionListComponent implements OnInit {
 
   wallet$: Observable<IWallet>;
   @Input() transactions: ITransaction[] = [];
@@ -19,10 +19,6 @@ export class TransactionListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.wallet$ = this.walletService.wallet;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
   }
 
   sortTransactionsByAmount(param: number) {

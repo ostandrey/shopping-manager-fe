@@ -6,6 +6,7 @@ import {UserComponent} from './user.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [UserService],
 })

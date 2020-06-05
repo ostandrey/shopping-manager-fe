@@ -18,7 +18,7 @@ export class TransactionDeleteComponent {
 
   deleteTransaction(): void {
     this.transactionService.deleteTransaction(this.data.id);
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 
   onNoClick(): void {
