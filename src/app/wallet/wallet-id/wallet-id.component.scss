@@ -275,7 +275,7 @@ img{
   ##Screen = B/w 320px to 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) and (orientation: portrait) {
+@media (min-width: 320px) and (max-width: 480px) {
 
   .wallet-middle-section{
     display: flex;
@@ -292,12 +292,12 @@ img{
   }
 
   .input-field{
-    font-size: 1.8vmin;
+    font-size: 5vmin;
     color: #7b93a4;
   }
 
   .filter-label{
-    font-size: 4.8vmin;
+    font-size: 5vmin;
     color: #7b93a4;
   }
 
@@ -332,11 +332,11 @@ img{
   }
 
   .calculation-title{
-    font-size: 2.5vmin;
+    font-size: 2.8vmin;
   }
 
   .calculate-value{
-    font-size: 3.5vmin;
+    font-size: 4vmin;
   }
 
 }

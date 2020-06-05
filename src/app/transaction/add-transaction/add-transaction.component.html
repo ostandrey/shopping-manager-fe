@@ -85,18 +85,18 @@
           ></textarea>
         </mat-form-field>
         <!--End Card component: Note filter-->
-        <div mat-dialog-actions class="btn-container">
+        <div class="btn-container">
           <button mat-raised-button
-                  type="submit"
+                  class="btn btn-add"
                   [disabled]="transactionForm.invalid"
                   [mat-dialog-close]="transactionForm.value"
-                  class="btn-add"
+
           >
             Add transaction
           </button>
           <button mat-raised-button
                   (click)="onNoClick()"
-                  class="btn-cancel"
+                  class="btn btn-cancel"
           >
             Cancel
           </button>

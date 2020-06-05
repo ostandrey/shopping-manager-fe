@@ -43,9 +43,9 @@
           ></textarea>
         </mat-form-field>
         <!--End Card component: Note filter-->
-        <div mat-dialog-actions class="btn-container">
+        <div class=" btn-container">
           <button mat-raised-button
-                  class="btn-add"
+                  class="btn btn-add"
                   [disabled]="transactionForm.invalid"
                   [mat-dialog-close]="transactionForm.value"
                   (click)="onSubmitEdit()"
@@ -54,7 +54,7 @@
           </button>
           <button mat-raised-button
                   (click)="onNoClick()"
-                  class="btn-cancel"
+                  class="btn btn-cancel"
           >
             Cancel
           </button>

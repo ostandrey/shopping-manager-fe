@@ -11,7 +11,6 @@
   font-weight: 500;
   font-size: 2vmin;
   color: #324c5b;
-
 }
 
 .amount-column{
@@ -52,4 +51,44 @@
 
 .spinner{
   margin: auto;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .card-header{
+    font-size: 4vmin;
+    padding: unset;
+    margin: 3px;
+  }
+
+  .amount-column{
+    width: unset;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+  .category-column {
+    width: unset;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .description-column {
+    width: unset;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .date-column{
+    width: unset;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+
 }

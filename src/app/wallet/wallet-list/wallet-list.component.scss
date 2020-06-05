@@ -289,10 +289,11 @@ h2{
     cursor: pointer;
     height: 12vmin;
     box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
+    background-color: white;
   }
 
   h2{
-    font-size: 4.5vmin;
+    font-size: 6vmin;
   }
 
   .wallet-items{
@@ -300,7 +301,20 @@ h2{
   }
 
   app-wallet-list-item{
-    width: 80%;
+    width: 100%;
   }
 
+  .material-icons{
+    font-size: 10vmin;
+  }
+
+  .description{
+    font-size: 5vmin;
+  }
+
+  .wallet-add-button{
+    width: 70vmin;
+    height: 12vmin;
+    margin-top: 2vmin;
+  }
 }
