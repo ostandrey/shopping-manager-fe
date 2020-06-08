@@ -54,3 +54,102 @@
   }
 
 }
+@media (min-width: 481px) and (max-width: 680px) {
+
+
+
+  .trans-btn{
+    width: 13%;
+  }
+
+  .trans-list-edit{
+    font-size: 4vmin;
+  }
+
+  .trans-list-delete{
+    font-size: 4vmin;
+  }
+
+  .trans-list-content{
+    display: flex;
+    width: 100%;
+    font-size: 2.8vmin;
+    justify-content: space-between;
+  }
+
+  .trans-list-amount{
+    width: 20%;
+    font-weight: 500;
+  }
+
+
+  .trans-list-category {
+    width: 20%;
+  }
+
+
+
+  .trans-list-description {
+    width: 20%;
+  }
+
+  .trans-list-date{
+    width: 10%;
+  }
+
+
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+
+
+  .card-header{
+    width: 85%;
+    font-size: 3.5vmin;
+    padding: unset;
+    margin: 3px;
+  }
+
+  .trans-btn{
+    width: 13%;
+  }
+
+  .trans-list-edit{
+    font-size: 5vmin;
+  }
+
+  .trans-list-delete{
+    font-size: 5vmin;
+  }
+
+  .trans-list-content{
+    display: flex;
+    width: 100%;
+    font-size: 3vmin;
+    justify-content: space-between;
+  }
+
+  .trans-list-amount{
+    width: 20%;
+    font-weight: 500;
+  }
+
+
+  .trans-list-category {
+    width: 20%;
+  }
+
+
+
+  .trans-list-description {
+    width: 20%;
+  }
+
+  .trans-list-date{
+    width: 10%;
+  }
+
+
+}
+
