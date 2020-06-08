@@ -95,6 +95,10 @@
                             *ngIf="totalPeriodIncomes + totalPeriodExpenses < 0" style="color: #f14c52;">
             {{totalPeriodIncomes + totalPeriodExpenses | number:'1.2-2'}}
           </mat-card-content>
+          <mat-card-content class="calculate-value"
+                            *ngIf="totalPeriodIncomes + totalPeriodExpenses == 0" style="color: #324c5b;">
+            {{totalPeriodIncomes + totalPeriodExpenses | number:'1.2-2'}}
+          </mat-card-content>
         </mat-card>
         <!--End Card component: Total Period Change-->
         <!--Card component: Total Period Expenses-->
