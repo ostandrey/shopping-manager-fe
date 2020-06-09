@@ -19,12 +19,14 @@ h2{
   width: 20%;
   box-shadow: 0 4px 12px 0 rgba(48, 82, 120, .12);
   color: #324c5b;
-
+  display: flex;
+  align-items: center;
 }
 
 .card-content{
   text-align: center;
   font-size: 2vmin;
+  margin: auto;
 }
 
 .icon-container{
