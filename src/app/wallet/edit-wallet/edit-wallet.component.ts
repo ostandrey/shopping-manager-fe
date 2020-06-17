@@ -6,7 +6,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../user/user';
 import {IWalletTypes} from '../add-wallet/add-wallet.component';
 import {Observable} from 'rxjs';
-import {ITransaction} from '../../transaction/transaction.interface';
 import {IWallet} from '../services/dataWallet/wallet.inteface';
 
 @Component({

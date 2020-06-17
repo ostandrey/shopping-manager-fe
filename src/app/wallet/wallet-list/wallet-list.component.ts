@@ -14,7 +14,9 @@ import {IWallet} from '../services/dataWallet/wallet.inteface';
 export class WalletListComponent implements OnInit {
 
   walletList: IWallet[];
+  // tslint:disable-next-line:variable-name
   _walletsContainer: HTMLElement;
+  // tslint:disable-next-line:variable-name
   _walletsListContainer: HTMLElement;
   _walletsConunter: number = 0;
 

@@ -46,6 +46,11 @@
   text-overflow: ellipsis;
 }
 
+.list{
+  max-height: 25vmin;
+  overflow-y: auto;
+}
+
 .list-item{
   width: 100%;
   white-space: nowrap;

@@ -51,7 +51,7 @@
   </div>
   <mat-divider></mat-divider>
   <mat-spinner class="spinner" *ngIf="!transactions"></mat-spinner>
-  <mat-list role="list" *ngIf="transactions">
+  <mat-list class="list" role="list" *ngIf="transactions">
     <mat-list-item role="listitem"
                    *ngFor="let transaction of transactions">
       <app-transaction-list-item class="list-item" [transaction]= transaction ></app-transaction-list-item>

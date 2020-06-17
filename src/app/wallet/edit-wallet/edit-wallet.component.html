@@ -6,12 +6,9 @@
   <mat-card-content>
     <form [formGroup]="inputForm">
       <div>
-        <!--Module dashboard component: Filters-->
         <mat-card-content class="filters">
-          <!--Card component: Wallet filter-->
           <mat-form-field class="filter">
             <mat-label class="filter-label">Wallet type</mat-label>
-            <!--Filter component: Select wallet-->
             <mat-select class="input-field"
                         formControlName="type"
                         required
@@ -24,8 +21,6 @@
               Please choose type of wallet
             </mat-error>
           </mat-form-field>
-          <!--End Card component: Wallet filter-->
-          <!--Card component: Note filter-->
           <mat-form-field class="filter">
             <mat-label class="filter-label">Name of wallet</mat-label>
             <input matInput
@@ -37,8 +32,6 @@
               Please name your wallet
             </mat-error>
           </mat-form-field>
-          <!--End Card component: Note filter-->
-          <!--Card component: Note filter-->
           <mat-form-field class="filter" id="filter-note">
             <mat-label class="filter-label">Balance</mat-label>
             <input matInput
@@ -51,9 +44,7 @@
               Please input number balance
             </mat-error>
           </mat-form-field>
-          <!--End Card component: Note filter-->
         </mat-card-content>
-        <!--End Module dashboard component: Filters-->
       </div>
       <div mat-dialog-actions class="btn-container">
         <button mat-raised-button
