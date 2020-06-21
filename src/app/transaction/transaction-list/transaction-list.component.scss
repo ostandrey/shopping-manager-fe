@@ -160,4 +160,9 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
   }
+
+  .list{
+    max-height: 50vmin;
+    overflow-y: auto;
+  }
 }
